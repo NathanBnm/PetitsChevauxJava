@@ -5,15 +5,17 @@ package petitschevaux;
  */
 public abstract class CaseColoree extends Case {
 
+	private Couleur couleur;
+
 	/**
 	 * @param Couleur
 	 */
 	public CaseColoree(Couleur couleur) {
-		// TODO implement here
+		this.couleur = couleur;
 	}
 	
 	public Couleur getCouleur() {
-		return null;
+		return this.couleur;
 	}
 
 	/**
