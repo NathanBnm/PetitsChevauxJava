@@ -9,6 +9,7 @@ public class Pion {
 	 * 
 	 */
 	private final String id = null;
+	private Couleur couleurPion;
 
 	/**
 	 * @param String 
@@ -22,8 +23,7 @@ public class Pion {
 	 * @return
 	 */
 	public Couleur getCouleur() {
-		// TODO implement here
-		return null;
+		return this.couleurPion;
 	}
 
 }

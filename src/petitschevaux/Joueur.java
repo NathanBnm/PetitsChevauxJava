@@ -7,11 +7,10 @@ import java.util.ArrayList;
  */
 public abstract class Joueur {
 	
-	/**
-	 * 
-	 */
 	private String nom;
-
+	private Case CaseDepart;
+	private Couleur couleur;
+	
 	/**
 	 * @param String 
 	 * @param Couleur
@@ -24,8 +23,7 @@ public abstract class Joueur {
 	 * @return
 	 */
 	public Case getCaseDepart() {
-		// TODO implement here
-		return null;
+		return this.CaseDepart;
 	}
 
 	/**
@@ -33,8 +31,7 @@ public abstract class Joueur {
 	 * @return
 	 */
 	public void setCaseDepart(Case c) {
-		// TODO implement here
-		return;
+		c = this.CaseDepart;
 	}
 
 	/**
@@ -64,8 +61,7 @@ public abstract class Joueur {
 	 * @return
 	 */
 	public Couleur getCouleur() {
-		// TODO implement here
-		return null;
+		return this.couleur;
 	}
 
 	/**

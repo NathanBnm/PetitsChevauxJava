@@ -40,8 +40,8 @@ public class Partie {
 	 * @return
 	 */
 	private int lancerDe() {
-		// TODO implement here
-		return 0;
+		int num = (int) ((Math.random()*5)+1);
+		return num;
 	}
 
 	/**
