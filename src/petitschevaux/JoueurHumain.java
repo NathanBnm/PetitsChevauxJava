@@ -20,21 +20,23 @@ package petitschevaux;
 public class JoueurHumain extends Joueur {
 
 	/**
-	 * @param String 
-	 * @param Couleur
+	 * Constructeur par défaut d'un joueur humain
+	 * @param String Nom du joueur
+	 * @param Couleur Couleur du joueur
 	 */
 	public JoueurHumain(String nom, Couleur couleur) {
 		super(nom, couleur);
 	}
 
 	/**
-	 * @param int 
-	 * @param Plateau 
+	 * Cette méthode permet de choisir le pion à déplacer sur le plateau
+	 * @param int Numéro du pion
+	 * @param Plateau Plateau de jeu
 	 * @return
 	 */
 	public Pion choisirPion(int n, Plateau p) {
-		// TODO implement here
-		return null;
+		Pion pion =  new Pion(this.getNom(), this.getCouleur());
+		return pion;
 	}
 	
 }

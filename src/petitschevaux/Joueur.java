@@ -26,23 +26,26 @@ public abstract class Joueur {
 	private Couleur couleur;
 	
 	/**
-	 * @param String 
-	 * @param Couleur
+	 * Constructeur de joueur par défaut
+	 * @param String Nom du joueur
+	 * @param Couleur Couleur du joueur
 	 */
 	public Joueur(String nom, Couleur couleur) {
 		this.nom = nom;
+		this.couleur = couleur;
 	}
 
 	/**
-	 * @return
+	 * Renvoie la case de départ
+	 * @return Case de départ
 	 */
 	public Case getCaseDepart() {
 		return this.CaseDepart;
 	}
 
 	/**
-	 * @param Case 
-	 * @return
+	 * Définit la case de départ du joueur passée en paramètre
+	 * @param Case Une case
 	 */
 	public void setCaseDepart(Case c) {
 		c = this.CaseDepart;
@@ -57,22 +60,24 @@ public abstract class Joueur {
 	}
 
 	/**
-	 * @return
+	 * Renvoie le nom du joueur
+	 * @return Nom du joueur
 	 */
 	public String getNom() {
 		return this.nom;
 	}
 
 	/**
-	 * @param String 
-	 * @return
+	 * Définit le nom du joueur passé en paramètre
+	 * @param String Nom du joueur
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
 	/**
-	 * @return
+	 * Renvoie la couleur du joueur
+	 * @return Couleur du joueur
 	 */
 	public Couleur getCouleur() {
 		return this.couleur;
