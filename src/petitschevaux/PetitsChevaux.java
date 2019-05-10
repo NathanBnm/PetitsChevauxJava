@@ -27,11 +27,11 @@ public class PetitsChevaux {
 
 	/**
 	 * @param String[] 
-	 * @return
 	 */
 	public static void main(String[] args) {
-		// TODO implement here
-		return;
+		System.out.println("Jeu des petits chevaux");
+		Partie partie = new Partie();
+		partie.initialiserJoueurs(4);
 	}
 
 }
