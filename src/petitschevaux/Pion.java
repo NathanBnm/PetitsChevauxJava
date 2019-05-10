@@ -30,11 +30,12 @@ public class Pion {
 	 * @param Couleur
 	 */
 	public Pion(String id, Couleur couleur) {
-		// TODO implement here
+		this.couleurPion = couleur;
 	}
 
 	/**
-	 * @return
+	 * Renvoie la couleur du pion
+	 * @return Couleur du pion
 	 */
 	public Couleur getCouleur() {
 		return this.couleurPion;
