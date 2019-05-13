@@ -55,11 +55,9 @@ public class Partie {
 			System.out.println();
 			System.out.print("Nom du Joueur " + (i + 1) + " : ");
 			nom = sc.next();
-			//System.out.println("Vous vous appelez " + nom);
 			//Choix de la couleur des joueurs
 			System.out.print("Couleur (J, B, V, R) : ");
 			coul = sc.next();
-			//System.out.println("Vous avez choisi la couleur " + coul);
 			
 			//On détecte la couleur en fonction de la saisie
 			switch(coul) {
@@ -68,22 +66,20 @@ public class Partie {
 				case "V": couleur = Couleur.VERT; break;
 				case "R": couleur = Couleur.ROUGE; break;
 			}
-			
+
 			//On vérifie pour chaque joueur si le nom ou la couleur ont déjà été utilisés
 			for(Joueur j : listeJoueurs) {
+				nomUtilise = false;
+				couleurUtilisee = false;
 				//Pour le nom
 				if(j.getNom().equals(nom)) {
 					System.out.println("Nom déjà utilisé !");
 					nomUtilise = true;
-				} else {
-					nomUtilise = false;
 				}
 				//Pour la couleur
 				if(j.getCouleur() == couleur) {
 					System.out.println("Couleur déjà utilisée ou non valide !");
 					couleurUtilisee = true;
-				} else {
-					couleurUtilisee = false;
 				}
 			}
 			
@@ -94,7 +90,6 @@ public class Partie {
 				//Sinon on créée un nouveau joueur puis on l'ajoute à la liste
 				Joueur joueur = new JoueurHumain(nom, couleur);
 				listeJoueurs.add(joueur);
-				//System.out.println("Nom : " + listeJoueurs.get(i).getNom() + ", Couleur : " + listeJoueurs.get(i).getCouleur());
 			}
 		}
 	}
