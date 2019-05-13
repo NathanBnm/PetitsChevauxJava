@@ -24,6 +24,8 @@ public abstract class Joueur {
 	private String nom;
 	private Case CaseDepart;
 	private Couleur couleur;
+	private ArrayList<Pion> chevaux;
+
 	
 	/**
 	 * Constructeur de joueur par défaut
@@ -55,8 +57,7 @@ public abstract class Joueur {
 	 * @return
 	 */
 	public ArrayList<Pion> getChevaux() {
-		// TODO implement here
-		return null;
+		return chevaux;
 	}
 
 	/**

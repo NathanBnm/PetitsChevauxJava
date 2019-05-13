@@ -22,7 +22,9 @@ import java.util.Scanner;
  * 
  */
 public class Partie {
-
+	
+	private ArrayList<Joueur> joueurs;
+	private Joueur joueurCourant;
 	/**
 	 * 
 	 */

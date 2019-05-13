@@ -21,6 +21,7 @@ import java.util.ArrayList;
  */
 public abstract class Case {
 
+	private ArrayList<Pion> chevaux;
 	/**
 	 * Default constructor
 	 */
@@ -31,8 +32,7 @@ public abstract class Case {
 	 * @return
 	 */
 	public ArrayList<Pion> getChevaux() {
-		// TODO implement here
-		return null;
+		return chevaux;
 	}
 
 	/**
