@@ -22,7 +22,7 @@ public class Pion {
 	/**
 	 * 
 	 */
-	private final String id = null;
+	private String id;
 	private Couleur couleurPion;
 
 	/**
@@ -40,5 +40,12 @@ public class Pion {
 	public Couleur getCouleur() {
 		return this.couleurPion;
 	}
+	
+	public String getId() {
+		return id;
+	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
 }
