@@ -31,6 +31,7 @@ public class Pion {
 	 */
 	public Pion(String id, Couleur couleur) {
 		this.couleurPion = couleur;
+		this.id = id;
 	}
 
 	/**

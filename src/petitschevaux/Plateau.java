@@ -24,20 +24,23 @@ public class Plateau {
 	/**
 	 * 
 	 */
+	private ArrayList<CaseEcurie> ecuries;
+	private ArrayList<CaseChemin> chemin;
 	private ArrayList<ArrayList<CaseEchelle>> echelles;
 
 	/**
 	 * Default constructor
 	 */
 	public Plateau() {
+		ecuries = new ArrayList<CaseEcurie>();
+		chemin = new ArrayList<CaseChemin>();
 	}
 
 	/**
 	 * @return
 	 */
 	public ArrayList<CaseEcurie> getEcuries() {
-		// TODO implement here
-		return null;
+		return ecuries;
 	}
 
 	/**
@@ -51,8 +54,7 @@ public class Plateau {
 	 * @return
 	 */
 	public ArrayList<CaseChemin> getChemins() {
-		// TODO implement here
-		return null;
+		return chemin;
 	}
 
 	/**
