@@ -21,7 +21,7 @@ import java.util.ArrayList;
  */
 public abstract class Case {
 
-	private ArrayList<Pion> chevaux;
+	private ArrayList<Pion> chevaux; //ajouter "= new Arraylist" si (new pointer exception)
 	/**
 	 * Default constructor
 	 */
@@ -40,8 +40,7 @@ public abstract class Case {
 	 * @return
 	 */
 	public void ajouterCheval(Pion p) {
-		// TODO implement here
-		return;
+		chevaux.add(p);
 	}
 
 	/**
