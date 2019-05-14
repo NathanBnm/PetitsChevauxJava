@@ -21,11 +21,12 @@ import java.util.ArrayList;
  */
 public abstract class Case {
 
-	private ArrayList<Pion> chevaux; //ajouter "= new Arraylist" si (new pointer exception)
+	private ArrayList<Pion> chevaux;
 	/**
 	 * Default constructor
 	 */
 	public Case() {
+		chevaux = new ArrayList<Pion>();
 	}
 
 	/**
