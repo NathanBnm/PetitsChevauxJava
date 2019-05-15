@@ -28,6 +28,7 @@ public class CasePleineException extends java.lang.Exception {
 	 * Default constructor
 	 */
 	public CasePleineException() {
+		super();
 	}
 
 
@@ -35,14 +36,14 @@ public class CasePleineException extends java.lang.Exception {
 	 * @param String
 	 */
 	public CasePleineException(String msg) {
-		// TODO implement here
+		super(msg);
 	}
 
 	/**
 	 * @param Throwable
 	 */
 	public CasePleineException(Throwable thr) {
-		// TODO implement here
+		super(thr);
 	}
 
 	/**
@@ -50,7 +51,7 @@ public class CasePleineException extends java.lang.Exception {
 	 * @param Throwable
 	 */
 	public CasePleineException(String msg, Throwable thr) {
-		// TODO implement here
+		super(msg, thr);
 	}
 
 	/**
@@ -60,7 +61,7 @@ public class CasePleineException extends java.lang.Exception {
 	 * @param Boolean
 	 */
 	public CasePleineException(String msg, Throwable thr, Boolean b1, Boolean b2) {
-		// TODO implement here
+		super(msg, thr, b1, b2);
 	}
 
 }

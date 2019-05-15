@@ -19,6 +19,7 @@ package petitschevaux;
  */
 public class PasDeJoueurException extends java.lang.Exception {
 
+
 	/**
 	 * 
 	 */
@@ -28,20 +29,21 @@ public class PasDeJoueurException extends java.lang.Exception {
 	 * Default constructor
 	 */
 	public PasDeJoueurException() {
+		super();
 	}
 
 	/**
 	 * @param String
 	 */
 	public PasDeJoueurException(String msg) {
-		// TODO implement here
+		super(msg);
 	}
 
 	/**
 	 * @param Throwable
 	 */
 	public PasDeJoueurException(Throwable thr) {
-		// TODO implement here
+		super(thr);
 	}
 
 	/**
@@ -49,7 +51,7 @@ public class PasDeJoueurException extends java.lang.Exception {
 	 * @param Throwable
 	 */
 	public PasDeJoueurException(String msg, Throwable thr) {
-		// TODO implement here
+		super(msg, thr);
 	}
 
 	/**
@@ -59,7 +61,7 @@ public class PasDeJoueurException extends java.lang.Exception {
 	 * @param Boolean
 	 */
 	public PasDeJoueurException(String msg, Throwable thr, Boolean b1, Boolean b2) {
-		// TODO implement here
+		super(msg, thr, b1, b2);
 	}
 
 }

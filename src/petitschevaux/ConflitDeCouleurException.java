@@ -28,20 +28,21 @@ public class ConflitDeCouleurException extends java.lang.Exception {
 	 * Default constructor
 	 */
 	public ConflitDeCouleurException() {
+		super();
 	}
 
 	/**
 	 * @param String
 	 */
 	public ConflitDeCouleurException(String msg) {
-		// TODO implement here
+		super(msg);
 	}
 
 	/**
 	 * @param Throwable
 	 */
 	public ConflitDeCouleurException(Throwable thr) {
-		// TODO implement here
+		super(thr);
 	}
 
 	/**
@@ -49,7 +50,7 @@ public class ConflitDeCouleurException extends java.lang.Exception {
 	 * @param Throwable
 	 */
 	public ConflitDeCouleurException(String msg, Throwable thr) {
-		// TODO implement here
+		super(msg, thr);
 	}
 
 	/**
@@ -59,7 +60,7 @@ public class ConflitDeCouleurException extends java.lang.Exception {
 	 * @param Boolean
 	 */
 	public ConflitDeCouleurException(String msg, Throwable thr, Boolean b1, Boolean b2) {
-		// TODO implement here
+		super(msg, thr);
 	}
 
 }
