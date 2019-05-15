@@ -34,6 +34,20 @@ public class Plateau {
 	public Plateau() {
 		ecuries = new ArrayList<CaseEcurie>();
 		chemin = new ArrayList<CaseChemin>();
+		for(int i=0 ; i<56 ; i++) {
+			chemin.add(new CaseChemin());
+		}
+		ArrayList<Couleur> couleur = new ArrayList<Couleur>();
+		couleur.add(Couleur.BLEU); 
+		couleur.add(Couleur.JAUNE); 
+		couleur.add(Couleur.ROUGE); 
+		couleur.add(Couleur.VERT);
+		for(int i=0 ; i<4 ; i++) {
+			for(int j=0 ; j<6 ; j++) {
+				echelles.get(i).add(new CaseEchelle(couleur.get(i)));
+			}
+			ecuries.add(new CaseEcurie(couleur.get(i)));
+		}
 	}
 
 	/**

@@ -27,19 +27,29 @@ public class CaseEchelle extends CaseColoree {
 	}
 
 	/**
+	 *peutPasser permet de vérifier si un obstacle ce trouve sur la route
+	 *, soit un cheval allié.
 	 * @return
 	 */
 	public Boolean peutPasser(Pion p) {
-		// TODO implement here
-		return null;
+		Boolean res = false;
+		if(getChevaux().isEmpty()) {
+			res = true;
+		}
+		return res;
 	}
 
 	/**
+	 *peutSArreter permet de vérifier si un obstacle ce trouve sur la case d'arriver
+	 *, soit un cheval allié.
 	 * @return
 	 */
 	public Boolean peutSArreter(Pion p) {
-		// TODO implement here
-		return null;
+		Boolean res = false;
+		if(getChevaux().isEmpty()) {
+			res = true;
+		}
+		return res;
 	}
 
 }

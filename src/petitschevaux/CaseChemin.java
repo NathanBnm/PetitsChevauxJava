@@ -26,19 +26,28 @@ public class CaseChemin extends Case {
 	}
 
 	/**
+	 *peutPasser permet de vérifier si un obstacle ce trouve sur la route
+	 *, soit un cheval adverse.
 	 * @return
 	 */
 	public Boolean peutPasser(Pion p) {
-		// TODO implement here
-		return null;
+		Boolean res = false;
+		for(Pion c : getChevaux()) {
+			if(c.getCouleur() == p.getCouleur()) {
+				res = true;
+			}
+		}
+		return res;
 	}
 
 	/**
+	 *peutSArreter permet de vérifier si un obstacle ce trouve sur la case d'arriver.
+	 *(Dans ce cas, peutSArreter retourne toujours true car on peut s'arrêter sur une case
+	 *avec un cheval adverse (le manger) et sur une case avec un cheval allié.)
 	 * @return
 	 */
 	public Boolean peutSArreter(Pion p) {
-		// TODO implement here
-		return null;
+		return true;
 	}
 
 }
