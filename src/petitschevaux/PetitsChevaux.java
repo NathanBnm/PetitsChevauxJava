@@ -32,6 +32,7 @@ public class PetitsChevaux {
 	public static void main(String[] args) {
 		System.out.println("Jeu des petits chevaux");
 		Partie partie = new Partie();
+		partie.initialiserPlateau();
 		partie.initialiserJoueurs(4);
 		partie.jouerUnTour();
 	}

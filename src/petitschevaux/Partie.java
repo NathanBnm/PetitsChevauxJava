@@ -92,6 +92,10 @@ public class Partie {
 				n++;
 			}
 		} while(n < nbJoueurs);
+		
+		Random j = new Random();
+		Joueur premierJoueur = joueurs.get(j.nextInt(3));
+		setJoueurCourant(premierJoueur);
 	}
 
 	/**
@@ -100,9 +104,6 @@ public class Partie {
 	public void initialiserPlateau() {
 		plateau = new Plateau();
 		plateau.afficher();
-		Random j = new Random();
-		Joueur premierJoueur = joueurs.get(j.nextInt(4)+1);
-		setJoueurCourant(premierJoueur);
 	}
 
 	/**

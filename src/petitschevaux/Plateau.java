@@ -45,7 +45,7 @@ public class Plateau {
 		couleur.add(Couleur.VERT);
 		for(int i=0 ; i<4 ; i++) {
 			for(int j=0 ; j<6 ; j++) {
-				echelles.get(i).add(new CaseEchelle(couleur.get(i)));
+				//echelles.get(i).add(new CaseEchelle(couleur.get(i)));
 			}
 			ecuries.add(new CaseEcurie(couleur.get(i)));
 		}
@@ -76,8 +76,10 @@ public class Plateau {
 	 * @return
 	 */
 	public void afficher() {
-		System.out.println();
-		System.out.println("Ecuries : " + ecuries.toString());
+		System.out.println("Ecuries :");
+		for(int i = 0; i < 4; i++) {
+			System.out.println("Ecurie " + (i + 1) + " " + ecuries.get(i).getChevaux().toString());
+		}
 		System.out.println();
 		System.out.println("Chemin : " + chemin.toString());
 		System.out.println();
