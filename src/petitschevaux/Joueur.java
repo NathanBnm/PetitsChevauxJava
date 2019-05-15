@@ -54,7 +54,7 @@ public abstract class Joueur {
 	 * @param Case Une case
 	 */
 	public void setCaseDepart(Case c) {
-		c = this.CaseDepart;
+		this.CaseDepart = c;
 	}
 
 	/**

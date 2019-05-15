@@ -76,8 +76,13 @@ public class Plateau {
 	 * @return
 	 */
 	public void afficher() {
-		// TODO implement here
-		return;
+		System.out.println();
+		System.out.println("Ecuries : " + ecuries.toString());
+		System.out.println();
+		System.out.println("Chemin : " + chemin.toString());
+		System.out.println();
+		System.out.println("Echelles : " + echelles.toString());
+		System.out.println();
 	}
 
 	/**
@@ -86,8 +91,11 @@ public class Plateau {
 	 * @return
 	 */
 	public void deplacerPion(Pion p, Case c) {
-		// TODO implement here
-		return;
+		if(c.peutPasser(p)) {
+			c.ajouterCheval(p);
+		} else {
+			System.out.println("Le cheval ne peut pas passer !");
+		}
 	}
 
 }
