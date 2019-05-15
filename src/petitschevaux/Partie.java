@@ -22,18 +22,18 @@ import java.util.Scanner;
  * 
  */
 public class Partie {
-	
-	private ArrayList<Joueur> joueurs;
-	private Joueur joueurCourant;
 	/**
 	 * 
 	 */
+	private ArrayList<Joueur> joueurs;
+	private Joueur joueurCourant;
 	private Random de;
 
 	/**
 	 * Default constructor
 	 */
 	public Partie() {
+		de = new Random();
 	}
 
 	/**
@@ -105,17 +105,15 @@ public class Partie {
 	}
 
 	/**
-	 * @return
+	 * La méthode nextInt() de la classe Random permet de générer un entier aléatoire 
+	 * compris entre 0 inclus et l'entier passé en paramètre exclus. 
+	 * En ajoutant 1 et en enlevant le minimum dans l'entier en paramètre, 
+	 * puis en ajoutant le nombre minimum au résultat, on arrive à obtenir un 
+	 * nombre aléatoire compris entre les deux valeurs
+	 * @return valeur du dé
 	 */
 	private int lancerDe() {
 		return de.nextInt(6)+1;
-		/*
-		La méthode nextInt() de la classe Random permet de générer un entier aléatoire 
-		compris entre 0 inclus et l'entier passé en paramètre exclus. 
-		En ajoutant 1 et en enlevant le minimum dans l'entier en paramètre, 
-		puis en ajoutant le nombre minimum au résultat, on arrive à obtenir un 
-		nombre aléatoire compris entre les deux valeurs
-		*/
 	}
 
 	/**
