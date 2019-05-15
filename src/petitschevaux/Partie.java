@@ -108,15 +108,14 @@ public class Partie {
 	 * @return
 	 */
 	private int lancerDe() {
-		//int num = (int) ((Math.random()*5)+1);
-		return de.nextInt(6-1+1)+1;
-		/**
-		 * La méthode nextInt() de la classe Random permet de générer un entier aléatoire 
-		 * compris entre 0 inclus et l'entier passé en paramètre exclus. 
-		 * En ajoutant 1 et en enlevant le minimum dans l'entier en paramètre, 
-		 * puis en ajoutant le nombre minimum au résultat, on arrive à obtenir un 
-		 * nombre aléatoire compris entre les deux valeurs
-		 */
+		return de.nextInt(6)+1;
+		/*
+		La méthode nextInt() de la classe Random permet de générer un entier aléatoire 
+		compris entre 0 inclus et l'entier passé en paramètre exclus. 
+		En ajoutant 1 et en enlevant le minimum dans l'entier en paramètre, 
+		puis en ajoutant le nombre minimum au résultat, on arrive à obtenir un 
+		nombre aléatoire compris entre les deux valeurs
+		*/
 	}
 
 	/**
@@ -139,8 +138,7 @@ public class Partie {
 	 * @return
 	 */
 	public Joueur getJoueurCourant() {
-		// TODO implement here
-		return null;
+		return joueurCourant;
 	}
 
 	/**
@@ -148,8 +146,7 @@ public class Partie {
 	 * @return
 	 */
 	public void setJoueurCourant(Joueur j) {
-		// TODO implement here
-		return;
+		this.joueurCourant = j;
 	}
 
 	/**
@@ -164,8 +161,7 @@ public class Partie {
 	 * @return
 	 */
 	public ArrayList<Joueur> getJoueurs() {
-		// TODO implement here
-		return null;
+		return joueurs;
 	}
 
 	/**
