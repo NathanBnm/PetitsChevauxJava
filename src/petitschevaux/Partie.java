@@ -41,37 +41,37 @@ public class Partie {
 	 * @param int 
 	 */
 	public void initialiserJoueurs(int nbJoueurs) {
-		
+
 		Scanner sc = new Scanner(System.in);
-		
+
 		String nom = "";
 		String coul = "";
 		Couleur couleur = null;
-		
+
 		ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur> ();
-		
+
 		Boolean couleurUtilisee = false;
-		
+
 		Case depart = null;
 		int n = 0;
-		
+
 		do {			
 			//Saisie du nom des joueurs
 			System.out.println();
 			System.out.print("Nom du Joueur " + (n + 1) + " : ");
 			nom = sc.next();
-			
+
 			//Choix de la couleur des joueurs
 			System.out.print("Couleur (J, B, V, R) : ");
 			coul = sc.next();
 			coul = coul.toUpperCase();
-			
+
 			//On détecte la couleur en fonction de la saisie
 			switch(coul) {
-				case "J": couleur = Couleur.JAUNE; depart = plateau.getChemins().get(1); break;
-				case "B": couleur = Couleur.BLEU; depart = plateau.getChemins().get(15); break;
-				case "R": couleur = Couleur.ROUGE; depart = plateau.getChemins().get(29); break;
-				case "V": couleur = Couleur.VERT; depart = plateau.getChemins().get(43); break;
+			case "J": couleur = Couleur.JAUNE; depart = plateau.getChemins().get(1); break;
+			case "B": couleur = Couleur.BLEU; depart = plateau.getChemins().get(15); break;
+			case "R": couleur = Couleur.ROUGE; depart = plateau.getChemins().get(29); break;
+			case "V": couleur = Couleur.VERT; depart = plateau.getChemins().get(43); break;
 			}
 
 			//On vérifie pour chaque joueur si le nom ou la couleur ont déjà été utilisés
@@ -83,11 +83,11 @@ public class Partie {
 					couleurUtilisee = true;
 				}
 			}
-			
+
 			if(!couleurUtilisee) {
 				Joueur joueur = new JoueurHumain(nom, couleur);
 				listeJoueurs.add(joueur);
-				
+
 				joueur.setCaseDepart(depart);
 				n++;
 			}
@@ -99,6 +99,10 @@ public class Partie {
 	 */
 	public void initialiserPlateau() {
 		plateau = new Plateau();
+		plateau.afficher();
+		Random j = new Random();
+		Joueur premierJoueur = joueurs.get(j.nextInt(4)+1);
+		setJoueurCourant(premierJoueur);
 	}
 
 	/**
@@ -117,8 +121,33 @@ public class Partie {
 	 * @return
 	 */
 	public void jouerUnTour() {
-		// TODO implement here
-		return;
+		Scanner sc = new Scanner(System.in);
+		String rep = "";
+		String n;
+		int de = lancerDe();
+		System.out.println("Au tour de " + joueurCourant.getNom());
+		/*
+		if(de == 6) {
+			System.out.print("Voulez vous sortir un pion ? (O/N)");
+			rep = sc.next();
+			rep.toUpperCase();
+			if(rep.equals("O")) {
+				
+			} else {
+				System.out.print("Quel pion voulez-vous déplacer ? (1, 2, 3, 4)");
+				n = sc.next();
+				switch(n) {
+				case "1": plateau.deplacerPion(joueurCourant.getChevaux().get(1), plateau.getChemins()  );
+				
+				}
+			}
+		} else {
+			System.out.println("Vous passez votre tour");
+		}
+		*/
+		
+		
+		
 	}
 
 	/**
@@ -128,7 +157,6 @@ public class Partie {
 		// TODO implement here
 		return false;
 	}
-
 	/**
 	 * @return
 	 */

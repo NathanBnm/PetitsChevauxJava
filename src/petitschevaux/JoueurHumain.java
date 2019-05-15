@@ -35,7 +35,7 @@ public class JoueurHumain extends Joueur {
 	 * @return
 	 */
 	public Pion choisirPion(int n, Plateau p) {
-		Pion pion =  new Pion(this.getNom(), this.getCouleur());
+		Pion pion =  new Pion("" + n, this.getCouleur());
 		return pion;
 	}
 	

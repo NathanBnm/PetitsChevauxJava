@@ -33,6 +33,7 @@ public class PetitsChevaux {
 		System.out.println("Jeu des petits chevaux");
 		Partie partie = new Partie();
 		partie.initialiserJoueurs(4);
+		partie.jouerUnTour();
 	}
 
 }

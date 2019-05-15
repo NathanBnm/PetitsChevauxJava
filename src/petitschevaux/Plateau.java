@@ -34,6 +34,7 @@ public class Plateau {
 	public Plateau() {
 		ecuries = new ArrayList<CaseEcurie>();
 		chemin = new ArrayList<CaseChemin>();
+		echelles = new ArrayList<ArrayList<CaseEchelle>>();
 		for(int i=0 ; i<56 ; i++) {
 			chemin.add(new CaseChemin());
 		}
