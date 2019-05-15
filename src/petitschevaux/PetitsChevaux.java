@@ -27,6 +27,7 @@ public class PetitsChevaux {
 
 	/**
 	 * @param String[] 
+	 * @throws CouleurInvalideException 
 	 */
 	public static void main(String[] args) {
 		System.out.println("Jeu des petits chevaux");

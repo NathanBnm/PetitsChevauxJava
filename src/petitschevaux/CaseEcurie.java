@@ -30,16 +30,14 @@ public class CaseEcurie extends CaseColoree {
 	 * @return
 	 */
 	public Boolean peutPasser(Pion p) {
-		// TODO implement here
-		return null;
+		return true;
 	}
 
 	/**
 	 * @return
 	 */
 	public Boolean peutSArreter(Pion p) {
-		// TODO implement here
-		return null;
+		return true;
 	}
 
 }

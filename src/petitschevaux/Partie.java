@@ -49,17 +49,20 @@ public class Partie {
 		
 		ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur> ();
 		
-		Boolean nomUtilise = false;
 		Boolean couleurUtilisee = false;
+	
+		int n = 0;
 		
-		for(int i = 0; i < nbJoueurs; i++) {
+		do {			
 			//Saisie du nom des joueurs
 			System.out.println();
-			System.out.print("Nom du Joueur " + (i + 1) + " : ");
+			System.out.print("Nom du Joueur " + (n + 1) + " : ");
 			nom = sc.next();
+			
 			//Choix de la couleur des joueurs
 			System.out.print("Couleur (J, B, V, R) : ");
 			coul = sc.next();
+			coul = coul.toUpperCase();
 			
 			//On détecte la couleur en fonction de la saisie
 			switch(coul) {
@@ -71,13 +74,7 @@ public class Partie {
 
 			//On vérifie pour chaque joueur si le nom ou la couleur ont déjà été utilisés
 			for(Joueur j : listeJoueurs) {
-				nomUtilise = false;
 				couleurUtilisee = false;
-				//Pour le nom
-				if(j.getNom().equals(nom)) {
-					System.out.println("Nom déjà utilisé !");
-					nomUtilise = true;
-				}
 				//Pour la couleur
 				if(j.getCouleur() == couleur) {
 					System.out.println("Couleur déjà utilisée ou non valide !");
@@ -85,15 +82,12 @@ public class Partie {
 				}
 			}
 			
-			if(nomUtilise == true || couleurUtilisee == true) {
-				//Si un nom ou une couleur a déjà été utilisée on relance le tour de boucle
-				i = i - 1;
-			} else {
-				//Sinon on créée un nouveau joueur puis on l'ajoute à la liste
+			if(!couleurUtilisee) {
 				Joueur joueur = new JoueurHumain(nom, couleur);
 				listeJoueurs.add(joueur);
+				n++;
 			}
-		}
+		} while(n < nbJoueurs);
 	}
 
 	/**
