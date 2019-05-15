@@ -20,8 +20,8 @@ package petitschevaux;
 public enum Couleur {
 	JAUNE('J'),
 	BLEU('B'),
-	VERT('V'),
-	ROUGE('R');
+	ROUGE('R'),
+	VERT('V');
 	
 	public final char symbole;
 	

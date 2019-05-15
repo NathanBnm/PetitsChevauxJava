@@ -35,6 +35,10 @@ public abstract class Joueur {
 	public Joueur(String nom, Couleur couleur) {
 		this.nom = nom;
 		this.couleur = couleur;
+		chevaux = new ArrayList<Pion> ();
+		for(int i = 0; i < 4; i++) {
+			chevaux.add(new Pion("" + (i + 1), couleur));
+		}
 	}
 
 	/**

@@ -51,7 +51,8 @@ public class Partie {
 		ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur> ();
 		
 		Boolean couleurUtilisee = false;
-	
+		
+		Case depart = null;
 		int n = 0;
 		
 		do {			
@@ -67,10 +68,10 @@ public class Partie {
 			
 			//On détecte la couleur en fonction de la saisie
 			switch(coul) {
-				case "J": couleur = Couleur.JAUNE; break;
-				case "B": couleur = Couleur.BLEU; break;
-				case "V": couleur = Couleur.VERT; break;
-				case "R": couleur = Couleur.ROUGE; break;
+				case "J": couleur = Couleur.JAUNE; depart = plateau.getChemins().get(1); break;
+				case "B": couleur = Couleur.BLEU; depart = plateau.getChemins().get(15); break;
+				case "R": couleur = Couleur.ROUGE; depart = plateau.getChemins().get(29); break;
+				case "V": couleur = Couleur.VERT; depart = plateau.getChemins().get(43); break;
 			}
 
 			//On vérifie pour chaque joueur si le nom ou la couleur ont déjà été utilisés
@@ -86,6 +87,8 @@ public class Partie {
 			if(!couleurUtilisee) {
 				Joueur joueur = new JoueurHumain(nom, couleur);
 				listeJoueurs.add(joueur);
+				
+				joueur.setCaseDepart(depart);
 				n++;
 			}
 		} while(n < nbJoueurs);
