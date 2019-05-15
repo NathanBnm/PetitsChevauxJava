@@ -28,6 +28,7 @@ public class Partie {
 	private ArrayList<Joueur> joueurs;
 	private Joueur joueurCourant;
 	private Random de;
+	private Plateau plateau;
 
 	/**
 	 * Default constructor
@@ -94,8 +95,7 @@ public class Partie {
 	 * @return
 	 */
 	public void initialiserPlateau() {
-		// TODO implement here
-		return;
+		plateau = new Plateau();
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class Partie {
 	 * @return
 	 */
 	public Joueur getJoueurCourant() {
-		return joueurCourant;
+		return this.joueurCourant;
 	}
 
 	/**
@@ -145,15 +145,14 @@ public class Partie {
 	 * @return
 	 */
 	public Plateau getPlateau() {
-		// TODO implement here
-		return null;
+		return this.plateau;
 	}
 
 	/**
 	 * @return
 	 */
 	public ArrayList<Joueur> getJoueurs() {
-		return joueurs;
+		return this.joueurs;
 	}
 
 	/**
