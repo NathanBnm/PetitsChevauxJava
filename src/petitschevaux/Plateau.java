@@ -74,14 +74,14 @@ public class Plateau {
 	public void afficher() {
 		System.out.println("Ecuries :");
 		for(int i = 0; i < 4; i++) {
-			System.out.println("Ecurie " + Couleur.values()[i] + " " + ecuries.get(i).toString());
+			System.out.println("Ecurie (" + Couleur.values()[i] + ") " + ecuries.get(i).toString());
 		}
 		System.out.println();
 		System.out.println("Chemin : " + chemin.toString());
 		System.out.println();
 		
 		for(int i = 0; i < 4; i++) {
-			System.out.println("Echelle " + Couleur.values()[i] + " " + echelles.get(i).toString());
+			System.out.println("Echelle (" + Couleur.values()[i] + ") " + echelles.get(i).toString());
 		}
 		System.out.println();
 	}

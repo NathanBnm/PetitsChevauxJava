@@ -31,10 +31,6 @@ public abstract class CaseColoree extends Case {
 	public Couleur getCouleur() {
 		return this.couleur;
 	}
-	
-	public String toString() {
-		return "" + getCouleur().getSymbole();
-	}
 
 	/**
 	 * @return

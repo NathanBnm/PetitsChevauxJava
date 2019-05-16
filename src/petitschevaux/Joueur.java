@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public abstract class Joueur {
 	
 	private String nom;
-	private Case CaseDepart;
+	private Case caseDepart;
 	private Couleur couleur;
 	private ArrayList<Pion> chevaux;
 
@@ -39,6 +39,8 @@ public abstract class Joueur {
 		for(int i = 0; i < 4; i++) {
 			chevaux.add(new Pion("" + (i + 1), couleur));
 		}
+		caseDepart = new CaseEcurie(couleur);
+		caseDepart.getChevaux().addAll(chevaux);
 	}
 
 	/**
@@ -46,7 +48,7 @@ public abstract class Joueur {
 	 * @return Case de départ
 	 */
 	public Case getCaseDepart() {
-		return this.CaseDepart;
+		return this.caseDepart;
 	}
 
 	/**
@@ -54,7 +56,7 @@ public abstract class Joueur {
 	 * @param Case Une case
 	 */
 	public void setCaseDepart(Case c) {
-		this.CaseDepart = c;
+		this.caseDepart = c;
 	}
 
 	/**

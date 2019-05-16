@@ -48,14 +48,17 @@ public class Partie {
 		String coul = "";
 		Couleur couleur = null;
 
-		ArrayList<Joueur> joueurs = new ArrayList<Joueur> ();
+		joueurs = new ArrayList<Joueur> ();
 
-		Boolean couleurUtilisee = false;
-
-		Case depart = null;
+		Boolean couleurInvalide = false;
+		
 		int n = 0;
 
-		do {			
+		do {
+			couleurInvalide = false;
+			couleur = null;
+			coul = "";
+			
 			//Saisie du nom des joueurs
 			System.out.println();
 			System.out.print("Nom du Joueur " + (n + 1) + " : ");
@@ -68,31 +71,31 @@ public class Partie {
 
 			//On détecte la couleur en fonction de la saisie
 			switch(coul) {
-				case "J": couleur = Couleur.JAUNE; depart = plateau.getChemins().get(1); break;
-				case "B": couleur = Couleur.BLEU; depart = plateau.getChemins().get(15); break;
-				case "R": couleur = Couleur.ROUGE; depart = plateau.getChemins().get(29); break;
-				case "V": couleur = Couleur.VERT; depart = plateau.getChemins().get(43); break;
+				case "J": couleur = Couleur.JAUNE; break;
+				case "B": couleur = Couleur.BLEU; break;
+				case "R": couleur = Couleur.ROUGE; break;
+				case "V": couleur = Couleur.VERT; break;
+				default: 
+					couleurInvalide = true;
+					System.out.println("Couleur non valide !");
 			}
 
 			//On vérifie pour chaque joueur si le nom ou la couleur ont déjà été utilisés
 			for(Joueur j : joueurs) {
-				couleurUtilisee = false;
-				//Pour la couleur
 				if(j.getCouleur() == couleur) {
-					System.out.println("Couleur déjà utilisée ou non valide !");
-					couleurUtilisee = true;
+					couleurInvalide = true;
+					System.out.println("Couleur déjà utilisée !");
 				}
 			}
 
-			if(!couleurUtilisee) {
+			if(!couleurInvalide) {
 				Joueur joueur = new JoueurHumain(nom, couleur);
 				joueurs.add(joueur);
-
-				joueur.setCaseDepart(depart);
 				n++;
 			}
 		} while(n < nbJoueurs);
 		
+		//On définit le premier joueur aléatoirement
 		Random j = new Random();
 		Joueur premierJoueur = joueurs.get(j.nextInt(3));
 		setJoueurCourant(premierJoueur);
@@ -103,6 +106,13 @@ public class Partie {
 	 */
 	public void initialiserPlateau() {
 		plateau = new Plateau();
+		for(CaseEcurie e : plateau.getEcuries()) {
+			for(Joueur j : joueurs) {
+				if(e.getCouleur() == j.getCouleur()) {
+					e.getChevaux().addAll(j.getCaseDepart().getChevaux());
+				}
+			}
+		}
 	}
 
 	/**
@@ -127,15 +137,18 @@ public class Partie {
 		int de = lancerDe();
 		System.out.println("Au tour de " + joueurCourant.getNom() + " (" + joueurCourant.getCouleur() + ")");
 		System.out.println("La valeur du dé est " + de);
+		//Si le dé est = a 6 on demande au joueur si il veut sortir un pion
 		if(de == 6) {
 			System.out.print("Voulez vous sortir un pion ? (O/N)");
 			rep = sc.next();
-			rep.toUpperCase();
+			rep = rep.toUpperCase();
+			//Si oui alors lequel veut-il déplacer, si non on lui demande quel pion veut-il déplacer.
 			if(rep.equals("O")) {
 				System.out.println("Vous avez seléctionné Oui");
+				System.out.println("Lequel voulez vous sortir de l'écurie ? " + joueurCourant.getChevaux().toString());
 			} else {
 				System.out.println("Vous avez seléctionné Non");
-				System.out.print("Quel pion voulez-vous déplacer ? (1, 2, 3, 4)");
+				System.out.print("Quel pion voulez-vous déplacer ?" + joueurCourant.getChevaux().toString());
 				n = sc.next();
 				/*
 				switch(n) {
@@ -146,7 +159,10 @@ public class Partie {
 			}
 		} else {
 			System.out.println("Vous passez votre tour");
-		}	
+		}
+		
+		System.out.println("Appuyer pour continuer");
+		sc.nextLine();
 	}
 
 	/**
