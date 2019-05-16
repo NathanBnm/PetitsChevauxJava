@@ -49,4 +49,8 @@ public class Pion {
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	public String toString() {
+		return "Id : " + this.id + ", Couleur : " + this.getCouleur().getSymbole();
+	}
 }

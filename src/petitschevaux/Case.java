@@ -43,6 +43,10 @@ public abstract class Case {
 	public void ajouterCheval(Pion p) {
 		chevaux.add(p);
 	}
+	
+	public String toString() {
+		return chevaux.toString();
+	}
 
 	/**
 	 * @return

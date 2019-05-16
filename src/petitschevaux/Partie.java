@@ -48,7 +48,7 @@ public class Partie {
 		String coul = "";
 		Couleur couleur = null;
 
-		ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur> ();
+		ArrayList<Joueur> joueurs = new ArrayList<Joueur> ();
 
 		Boolean couleurUtilisee = false;
 
@@ -75,7 +75,7 @@ public class Partie {
 			}
 
 			//On vérifie pour chaque joueur si le nom ou la couleur ont déjà été utilisés
-			for(Joueur j : listeJoueurs) {
+			for(Joueur j : joueurs) {
 				couleurUtilisee = false;
 				//Pour la couleur
 				if(j.getCouleur() == couleur) {
@@ -86,7 +86,7 @@ public class Partie {
 
 			if(!couleurUtilisee) {
 				Joueur joueur = new JoueurHumain(nom, couleur);
-				listeJoueurs.add(joueur);
+				joueurs.add(joueur);
 
 				joueur.setCaseDepart(depart);
 				n++;
@@ -103,7 +103,6 @@ public class Partie {
 	 */
 	public void initialiserPlateau() {
 		plateau = new Plateau();
-		plateau.afficher();
 	}
 
 	/**
@@ -126,29 +125,27 @@ public class Partie {
 		String rep = "";
 		String n;
 		int de = lancerDe();
-		System.out.println("Au tour de " + joueurCourant.getNom());
-		/*
+		System.out.println("Au tour de " + joueurCourant.getNom() + " (" + joueurCourant.getCouleur() + ")");
 		if(de == 6) {
 			System.out.print("Voulez vous sortir un pion ? (O/N)");
 			rep = sc.next();
 			rep.toUpperCase();
 			if(rep.equals("O")) {
-				
+				System.out.println("Vous avez seléctionné Oui");
 			} else {
+				System.out.println("Vous avez seléctionné Non");
 				System.out.print("Quel pion voulez-vous déplacer ? (1, 2, 3, 4)");
 				n = sc.next();
+				/*
 				switch(n) {
-				case "1": plateau.deplacerPion(joueurCourant.getChevaux().get(1), plateau.getChemins()  );
-				
+					case "1": plateau.deplacerPion(joueurCourant.getChevaux().get(0), plateau.getChemins()  );
+					break;
 				}
+				*/
 			}
 		} else {
 			System.out.println("Vous passez votre tour");
-		}
-		*/
-		
-		
-		
+		}	
 	}
 
 	/**

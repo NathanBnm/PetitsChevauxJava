@@ -38,16 +38,12 @@ public class Plateau {
 		for(int i=0 ; i<56 ; i++) {
 			chemin.add(new CaseChemin());
 		}
-		ArrayList<Couleur> couleur = new ArrayList<Couleur>();
-		couleur.add(Couleur.BLEU); 
-		couleur.add(Couleur.JAUNE); 
-		couleur.add(Couleur.ROUGE); 
-		couleur.add(Couleur.VERT);
 		for(int i=0 ; i<4 ; i++) {
+			echelles.add(new ArrayList<CaseEchelle>());
 			for(int j=0 ; j<6 ; j++) {
-				//echelles.get(i).add(new CaseEchelle(couleur.get(i)));
+				echelles.get(i).add(new CaseEchelle(Couleur.values()[i]));
 			}
-			ecuries.add(new CaseEcurie(couleur.get(i)));
+			ecuries.add(new CaseEcurie(Couleur.values()[i]));
 		}
 	}
 
@@ -78,12 +74,15 @@ public class Plateau {
 	public void afficher() {
 		System.out.println("Ecuries :");
 		for(int i = 0; i < 4; i++) {
-			System.out.println("Ecurie " + (i + 1) + " " + ecuries.get(i).getChevaux().toString());
+			System.out.println("Ecurie " + Couleur.values()[i] + " " + ecuries.get(i).toString());
 		}
 		System.out.println();
 		System.out.println("Chemin : " + chemin.toString());
 		System.out.println();
-		System.out.println("Echelles : " + echelles.toString());
+		
+		for(int i = 0; i < 4; i++) {
+			System.out.println("Echelle " + Couleur.values()[i] + " " + echelles.get(i).toString());
+		}
 		System.out.println();
 	}
 
