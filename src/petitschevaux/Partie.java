@@ -150,12 +150,40 @@ public class Partie {
 				System.out.println("Vous avez seléctionné Non");
 				System.out.print("Quel pion voulez-vous déplacer ?" + joueurCourant.getChevaux().toString());
 				n = sc.next();
-				/*
+				
+				Pion pion = null;
+				Case courant = null;
+				Case suivant = null;
+				
 				switch(n) {
-					case "1": plateau.deplacerPion(joueurCourant.getChevaux().get(0), plateau.getChemins()  );
+					case "1":
+						for(int d = 0; d < de; d++) {
+							pion = joueurCourant.getChevaux().get(0);
+							courant = joueurCourant.getChevaux().get(0).getPosition();
+							suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
+							if(suivant.peutPasser(pion)) {
+								plateau.deplacerPion(pion, suivant);
+							} else {
+								System.out.println("Impossible de passer connard");
+							}
+						}
+					case "2":
+						pion = joueurCourant.getChevaux().get(1);
+						courant = joueurCourant.getChevaux().get(1).getPosition();
+						suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
+						plateau.deplacerPion(pion, suivant);
+					case "3":
+						pion = joueurCourant.getChevaux().get(2);
+						courant = joueurCourant.getChevaux().get(2).getPosition();
+						suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
+						plateau.deplacerPion(pion, suivant);
+					case "4":
+						pion = joueurCourant.getChevaux().get(3);
+						courant = joueurCourant.getChevaux().get(3).getPosition();
+						suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
+						plateau.deplacerPion(pion, suivant);
 					break;
 				}
-				*/
 			}
 		} else {
 			System.out.println("Vous passez votre tour");
