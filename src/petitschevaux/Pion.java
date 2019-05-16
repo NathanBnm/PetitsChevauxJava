@@ -24,6 +24,7 @@ public class Pion {
 	 */
 	private String id;
 	private Couleur couleurPion;
+	private Case position = null;
 
 	/**
 	 * @param String 
@@ -43,11 +44,19 @@ public class Pion {
 	}
 	
 	public String getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	public Case getPosition() {
+		return this.position;
+	}
+
+	public void setPosition(Case position) {
+		this.position = position;
 	}
 	
 	public String toString() {

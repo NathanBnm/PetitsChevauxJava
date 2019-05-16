@@ -36,7 +36,10 @@ public class PetitsChevaux {
 		partie.getPlateau().afficher();
 		partie.initialiserJoueurs(4);
 		partie.getPlateau().afficher();
-		partie.jouerUnTour();
+		do {
+			partie.jouerUnTour();
+			partie.getPlateau().afficher();
+		} while(!partie.estPartieTerminee());
 	}
 
 }

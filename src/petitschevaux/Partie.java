@@ -68,10 +68,10 @@ public class Partie {
 
 			//On détecte la couleur en fonction de la saisie
 			switch(coul) {
-			case "J": couleur = Couleur.JAUNE; depart = plateau.getChemins().get(1); break;
-			case "B": couleur = Couleur.BLEU; depart = plateau.getChemins().get(15); break;
-			case "R": couleur = Couleur.ROUGE; depart = plateau.getChemins().get(29); break;
-			case "V": couleur = Couleur.VERT; depart = plateau.getChemins().get(43); break;
+				case "J": couleur = Couleur.JAUNE; depart = plateau.getChemins().get(1); break;
+				case "B": couleur = Couleur.BLEU; depart = plateau.getChemins().get(15); break;
+				case "R": couleur = Couleur.ROUGE; depart = plateau.getChemins().get(29); break;
+				case "V": couleur = Couleur.VERT; depart = plateau.getChemins().get(43); break;
 			}
 
 			//On vérifie pour chaque joueur si le nom ou la couleur ont déjà été utilisés
@@ -126,6 +126,7 @@ public class Partie {
 		String n;
 		int de = lancerDe();
 		System.out.println("Au tour de " + joueurCourant.getNom() + " (" + joueurCourant.getCouleur() + ")");
+		System.out.println("La valeur du dé est " + de);
 		if(de == 6) {
 			System.out.print("Voulez vous sortir un pion ? (O/N)");
 			rep = sc.next();
