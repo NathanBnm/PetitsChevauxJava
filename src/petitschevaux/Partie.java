@@ -163,6 +163,7 @@ public class Partie {
 							suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
 							if(suivant.peutPasser(pion)) {
 								plateau.deplacerPion(pion, suivant);
+								pion.setPosition(suivant);
 							} else {
 								System.out.println("Impossible de passer connard");
 							}
