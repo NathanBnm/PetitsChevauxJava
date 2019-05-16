@@ -165,24 +165,48 @@ public class Partie {
 								plateau.deplacerPion(pion, suivant);
 								pion.setPosition(suivant);
 							} else {
-								System.out.println("Impossible de passer connard");
+								System.out.println("Impossible de passer !");
 							}
 						}
+					break;
 					case "2":
-						pion = joueurCourant.getChevaux().get(1);
-						courant = joueurCourant.getChevaux().get(1).getPosition();
-						suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
-						plateau.deplacerPion(pion, suivant);
+						for(int d = 0; d < de; d++) {
+							pion = joueurCourant.getChevaux().get(1);
+							courant = joueurCourant.getChevaux().get(1).getPosition();
+							suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
+							if(suivant.peutPasser(pion)) {
+								plateau.deplacerPion(pion, suivant);
+								pion.setPosition(suivant);
+							} else {
+								System.out.println("Impossible de passer !");
+							}
+						}
+					break;
 					case "3":
-						pion = joueurCourant.getChevaux().get(2);
-						courant = joueurCourant.getChevaux().get(2).getPosition();
-						suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
-						plateau.deplacerPion(pion, suivant);
+						for(int d = 0; d < de; d++) {
+							pion = joueurCourant.getChevaux().get(2);
+							courant = joueurCourant.getChevaux().get(2).getPosition();
+							suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
+							if(suivant.peutPasser(pion)) {
+								plateau.deplacerPion(pion, suivant);
+								pion.setPosition(suivant);
+							} else {
+								System.out.println("Impossible de passer !");
+							}
+						}
+					break;
 					case "4":
-						pion = joueurCourant.getChevaux().get(3);
-						courant = joueurCourant.getChevaux().get(3).getPosition();
-						suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
-						plateau.deplacerPion(pion, suivant);
+						for(int d = 0; d < de; d++) {
+							pion = joueurCourant.getChevaux().get(3);
+							courant = joueurCourant.getChevaux().get(3).getPosition();
+							suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
+							if(suivant.peutPasser(pion)) {
+								plateau.deplacerPion(pion, suivant);
+								pion.setPosition(suivant);
+							} else {
+								System.out.println("Impossible de passer !");
+							}
+						}
 					break;
 				}
 			}
