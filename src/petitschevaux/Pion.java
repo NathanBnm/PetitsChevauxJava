@@ -60,6 +60,6 @@ public class Pion {
 	}
 	
 	public String toString() {
-		return "Id : " + this.id + ", Couleur : " + this.getCouleur().getSymbole();
+		return this.id + " (" + this.getCouleur().getSymbole() + ")";
 	}
 }

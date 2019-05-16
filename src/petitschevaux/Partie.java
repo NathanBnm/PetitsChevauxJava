@@ -131,12 +131,21 @@ public class Partie {
 	 * @return
 	 */
 	public void jouerUnTour() {
+		//Il faudra penser à changer de joueur à la fin du tour
+		
 		Scanner sc = new Scanner(System.in);
 		String rep = "";
-		String n;
+		String n = "";
+		
+		Pion pion = null;
+		Case courant = null;
+		Case suivant = null;
+		
 		int de = lancerDe();
+		
 		System.out.println("Au tour de " + joueurCourant.getNom() + " (" + joueurCourant.getCouleur() + ")");
 		System.out.println("La valeur du dé est " + de);
+		
 		//Si le dé est = a 6 on demande au joueur si il veut sortir un pion
 		if(de == 6) {
 			System.out.print("Voulez vous sortir un pion ? (O/N)");
@@ -147,13 +156,10 @@ public class Partie {
 				System.out.println("Vous avez seléctionné Oui");
 				System.out.println("Lequel voulez vous sortir de l'écurie ? " + joueurCourant.getChevaux().toString());
 			} else {
+				//Il faudra vérifier si d'autres pions sont sortis
 				System.out.println("Vous avez seléctionné Non");
-				System.out.print("Quel pion voulez-vous déplacer ?" + joueurCourant.getChevaux().toString());
+				System.out.print("Quel pion voulez-vous déplacer ? " + joueurCourant.getChevaux().toString());
 				n = sc.next();
-				
-				Pion pion = null;
-				Case courant = null;
-				Case suivant = null;
 				
 				switch(n) {
 					case "1":
@@ -161,12 +167,8 @@ public class Partie {
 							pion = joueurCourant.getChevaux().get(0);
 							courant = joueurCourant.getChevaux().get(0).getPosition();
 							suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
-							if(suivant.peutPasser(pion)) {
-								plateau.deplacerPion(pion, suivant);
-								pion.setPosition(suivant);
-							} else {
-								System.out.println("Impossible de passer !");
-							}
+							plateau.deplacerPion(pion, suivant);
+							pion.setPosition(suivant);
 						}
 					break;
 					case "2":
@@ -174,12 +176,8 @@ public class Partie {
 							pion = joueurCourant.getChevaux().get(1);
 							courant = joueurCourant.getChevaux().get(1).getPosition();
 							suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
-							if(suivant.peutPasser(pion)) {
-								plateau.deplacerPion(pion, suivant);
-								pion.setPosition(suivant);
-							} else {
-								System.out.println("Impossible de passer !");
-							}
+							plateau.deplacerPion(pion, suivant);
+							pion.setPosition(suivant);
 						}
 					break;
 					case "3":
@@ -187,12 +185,8 @@ public class Partie {
 							pion = joueurCourant.getChevaux().get(2);
 							courant = joueurCourant.getChevaux().get(2).getPosition();
 							suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
-							if(suivant.peutPasser(pion)) {
-								plateau.deplacerPion(pion, suivant);
-								pion.setPosition(suivant);
-							} else {
-								System.out.println("Impossible de passer !");
-							}
+							plateau.deplacerPion(pion, suivant);
+							pion.setPosition(suivant);
 						}
 					break;
 					case "4":
@@ -200,12 +194,8 @@ public class Partie {
 							pion = joueurCourant.getChevaux().get(3);
 							courant = joueurCourant.getChevaux().get(3).getPosition();
 							suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
-							if(suivant.peutPasser(pion)) {
-								plateau.deplacerPion(pion, suivant);
-								pion.setPosition(suivant);
-							} else {
-								System.out.println("Impossible de passer !");
-							}
+							plateau.deplacerPion(pion, suivant);
+							pion.setPosition(suivant);
 						}
 					break;
 				}
