@@ -32,9 +32,13 @@ public class CaseChemin extends Case {
 	 */
 	public Boolean peutPasser(Pion p) {
 		Boolean res = false;
-		for(Pion c : getChevaux()) {
-			if(c.getCouleur() == p.getCouleur()) {
-				res = true;
+		if(getChevaux().size() == 0) {
+			res = true;
+		} else  {
+			for(Pion c : getChevaux()) {
+				if(c.getCouleur() == p.getCouleur()) {
+					res = true;
+				}
 			}
 		}
 		return res;

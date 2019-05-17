@@ -51,14 +51,14 @@ public class Partie {
 		joueurs = new ArrayList<Joueur> ();
 
 		Boolean couleurInvalide = false;
-		
+
 		int n = 0;
 
 		do {
 			couleurInvalide = false;
 			couleur = null;
 			coul = "";
-			
+
 			//Saisie du nom des joueurs
 			System.out.println();
 			System.out.print("Nom du Joueur " + (n + 1) + " : ");
@@ -71,13 +71,13 @@ public class Partie {
 
 			//On détecte la couleur en fonction de la saisie
 			switch(coul) {
-				case "J": couleur = Couleur.JAUNE; break;
-				case "B": couleur = Couleur.BLEU; break;
-				case "R": couleur = Couleur.ROUGE; break;
-				case "V": couleur = Couleur.VERT; break;
-				default: 
-					couleurInvalide = true;
-					System.out.println("Couleur non valide !");
+			case "J": couleur = Couleur.JAUNE; break;
+			case "B": couleur = Couleur.BLEU; break;
+			case "R": couleur = Couleur.ROUGE; break;
+			case "V": couleur = Couleur.VERT; break;
+			default: 
+				couleurInvalide = true;
+				System.out.println("Couleur non valide !");
 			}
 
 			//On vérifie pour chaque joueur si le nom ou la couleur ont déjà été utilisés
@@ -94,7 +94,7 @@ public class Partie {
 				n++;
 			}
 		} while(n < nbJoueurs);
-		
+
 		//On définit le premier joueur aléatoirement
 		Random j = new Random();
 		Joueur premierJoueur = joueurs.get(j.nextInt(3));
@@ -110,6 +110,9 @@ public class Partie {
 			for(Joueur j : joueurs) {
 				if(e.getCouleur() == j.getCouleur()) {
 					e.getChevaux().addAll(j.getCaseDepart().getChevaux());
+					for(int i = 0; i < 4; i++) {
+						e.getChevaux().get(i).setPosition(getPlateau().getEcuries().get(i));
+					}
 				}
 			}
 		}
@@ -132,20 +135,22 @@ public class Partie {
 	 */
 	public void jouerUnTour() {
 		//Il faudra penser à changer de joueur à la fin du tour
-		
+
 		Scanner sc = new Scanner(System.in);
 		String rep = "";
 		String n = "";
-		
+
 		Pion pion = null;
 		Case courant = null;
 		Case suivant = null;
-		
+
+		Boolean idValide = false;
+
 		int de = lancerDe();
-		
+
 		System.out.println("Au tour de " + joueurCourant.getNom() + " (" + joueurCourant.getCouleur() + ")");
 		System.out.println("La valeur du dé est " + de);
-		
+
 		//Si le dé est = a 6 on demande au joueur si il veut sortir un pion
 		if(de == 6) {
 			System.out.print("Voulez vous sortir un pion ? (O/N)");
@@ -154,56 +159,77 @@ public class Partie {
 			//Si oui alors lequel veut-il déplacer, si non on lui demande quel pion veut-il déplacer.
 			if(rep.equals("O")) {
 				System.out.println("Vous avez seléctionné Oui");
-				System.out.println("Lequel voulez vous sortir de l'écurie ? " + joueurCourant.getChevaux().toString());
+
+				do  {
+					idValide = false;
+
+					System.out.println("Lequel voulez vous sortir de l'écurie " + joueurCourant.getChevaux().toString() + " ? ");
+					n = sc.next();
+
+					int numPion = Integer.parseInt(n);
+					numPion--;
+
+					if(numPion >= 0 && numPion < 4) {
+						idValide = true;
+
+						pion = joueurCourant.getChevaux().get(numPion);
+
+						switch(joueurCourant.getCouleur()) {
+						case JAUNE:
+							suivant = plateau.getChemins().get(0);
+							break;
+						case BLEU:
+							suivant = plateau.getChemins().get(14);
+							break;
+						case ROUGE:
+							suivant = plateau.getChemins().get(28);
+							break;
+						case VERT: 
+							suivant = plateau.getChemins().get(42); 
+							break;
+						}
+
+						plateau.deplacerPion(pion, suivant);
+						setJoueurCourant(joueurs.get((joueurs.indexOf(joueurCourant) + 1) % 4));
+					} else {
+						System.out.println("Id de cheval invalide !");
+					}
+				} while(!idValide);
+
 			} else {
 				//Il faudra vérifier si d'autres pions sont sortis
 				System.out.println("Vous avez seléctionné Non");
-				System.out.print("Quel pion voulez-vous déplacer ? " + joueurCourant.getChevaux().toString());
 				n = sc.next();
-				
-				switch(n) {
-					case "1":
+
+				idValide = false;
+
+				do  {
+					idValide = false;
+
+					System.out.println("Quel pion voulez-vous déplacer " + joueurCourant.getChevaux().toString() + " ? ");
+					n = sc.next();
+
+					int numPion = Integer.parseInt(n);
+
+					if(numPion >= 0 && numPion < 4) {
+						idValide = true;
 						for(int d = 0; d < de; d++) {
-							pion = joueurCourant.getChevaux().get(0);
-							courant = joueurCourant.getChevaux().get(0).getPosition();
+							pion = joueurCourant.getChevaux().get(numPion--);
+							courant = joueurCourant.getChevaux().get(numPion--).getPosition();
 							suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
 							plateau.deplacerPion(pion, suivant);
-							pion.setPosition(suivant);
 						}
-					break;
-					case "2":
-						for(int d = 0; d < de; d++) {
-							pion = joueurCourant.getChevaux().get(1);
-							courant = joueurCourant.getChevaux().get(1).getPosition();
-							suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
-							plateau.deplacerPion(pion, suivant);
-							pion.setPosition(suivant);
-						}
-					break;
-					case "3":
-						for(int d = 0; d < de; d++) {
-							pion = joueurCourant.getChevaux().get(2);
-							courant = joueurCourant.getChevaux().get(2).getPosition();
-							suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
-							plateau.deplacerPion(pion, suivant);
-							pion.setPosition(suivant);
-						}
-					break;
-					case "4":
-						for(int d = 0; d < de; d++) {
-							pion = joueurCourant.getChevaux().get(3);
-							courant = joueurCourant.getChevaux().get(3).getPosition();
-							suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
-							plateau.deplacerPion(pion, suivant);
-							pion.setPosition(suivant);
-						}
-					break;
-				}
+					} else {
+						System.out.println("Id de cheval invalide !");
+					}
+
+				} while(!idValide);
 			}
 		} else {
 			System.out.println("Vous passez votre tour");
+			setJoueurCourant(joueurs.get((joueurs.indexOf(joueurCourant) + 1) % 4));
 		}
-		
+
 		System.out.println("Appuyer pour continuer");
 		sc.nextLine();
 	}

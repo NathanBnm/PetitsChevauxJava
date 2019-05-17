@@ -94,6 +94,8 @@ public class Plateau {
 	public void deplacerPion(Pion p, Case c) {
 		if(c.peutPasser(p)) {
 			c.ajouterCheval(p);
+			p.getPosition().getChevaux().remove(p);
+			p.setPosition(c);
 		} else {
 			System.out.println("Le cheval ne peut pas passer !");
 		}
