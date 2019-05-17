@@ -15,7 +15,7 @@
 package petitschevaux;
 
 /**
- * 
+ * Classe ConflitDeCouleurException (hérite d'Exception)
  */
 public class ConflitDeCouleurException extends java.lang.Exception {
 

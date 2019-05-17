@@ -19,7 +19,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * 
+ * Classe Partie
  */
 public class Partie {
 	/**
@@ -38,6 +38,7 @@ public class Partie {
 	}
 
 	/**
+	 * initialiserJoueurs permet d'enregistrer 4 joueurs, ils entrent leurs prénoms et choissisent leurs couleurs
 	 * @param int 
 	 */
 	public void initialiserJoueurs(int nbJoueurs) {
@@ -102,7 +103,8 @@ public class Partie {
 	}
 
 	/**
-	 * @return
+	 * Inititaliser plateau permet de construire sa forme à partir des classe de cases : ses 4 écuries,
+	 * le chemin (56 cases) et les 4 échelles de 6 cases
 	 */
 	public void initialiserPlateau() {
 		plateau = new Plateau();
@@ -119,11 +121,7 @@ public class Partie {
 	}
 
 	/**
-	 * La méthode nextInt() de la classe Random permet de générer un entier aléatoire 
-	 * compris entre 0 inclus et l'entier passé en paramètre exclus. 
-	 * En ajoutant 1 et en enlevant le minimum dans l'entier en paramètre, 
-	 * puis en ajoutant le nombre minimum au résultat, on arrive à obtenir un 
-	 * nombre aléatoire compris entre les deux valeurs
+	 * La fonction lancerDe permet de retourner un entier entre 1 et 6 a partir du random De
 	 * @return valeur du dé
 	 */
 	private int lancerDe() {
@@ -131,11 +129,11 @@ public class Partie {
 	}
 
 	/**
-	 * @return
+	 * La fonction jouerUnTour est la fonction permettant de faire intéragire les joueurs avec
+	 * le jeu
 	 */
 	public void jouerUnTour() {
-		//Il faudra penser à changer de joueur à la fin du tour
-
+		
 		Scanner sc = new Scanner(System.in);
 		String rep = "";
 		String n = "";
@@ -190,6 +188,7 @@ public class Partie {
 						}
 
 						plateau.deplacerPion(pion, suivant);
+						//permet de passer au joueur suivant
 						setJoueurCourant(joueurs.get((joueurs.indexOf(joueurCourant) + 1) % 4));
 					} else {
 						System.out.println("Id de cheval invalide !");
@@ -200,8 +199,6 @@ public class Partie {
 				//Il faudra vérifier si d'autres pions sont sortis
 				System.out.println("Vous avez seléctionné Non");
 				n = sc.next();
-
-				idValide = false;
 
 				do  {
 					idValide = false;
@@ -227,6 +224,7 @@ public class Partie {
 			}
 		} else {
 			System.out.println("Vous passez votre tour");
+			//permet de passer au joueur suivant
 			setJoueurCourant(joueurs.get((joueurs.indexOf(joueurCourant) + 1) % 4));
 		}
 
@@ -242,37 +240,40 @@ public class Partie {
 		return false;
 	}
 	/**
-	 * @return
+	 * getJoueurCourant permet d'obtenir le joueur en train de jouer
+	 * @return this.joueurCourant
 	 */
 	public Joueur getJoueurCourant() {
 		return this.joueurCourant;
 	}
 
 	/**
+	 * setJoueurCourant permet de définir le joueur en train de jouer
 	 * @param Joueur 
-	 * @return
 	 */
 	public void setJoueurCourant(Joueur j) {
 		this.joueurCourant = j;
 	}
 
 	/**
-	 * @return
+	 * getPlateau permet d'obtenir le plateau
+	 * @return this.plateau
 	 */
 	public Plateau getPlateau() {
 		return this.plateau;
 	}
 
 	/**
-	 * @return
+	 * getJoueurs permet de récupérer la listes des joueurs
+	 * @return this.joueurs
 	 */
 	public ArrayList<Joueur> getJoueurs() {
 		return this.joueurs;
 	}
 
 	/**
+	 * mangerLesPions permet de faire retourner les pions manger à l'écurie
 	 * @param Case 
-	 * @return
 	 */
 	private void mangerLesPions(Case c) {
 		// TODO implement here

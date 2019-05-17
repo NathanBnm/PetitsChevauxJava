@@ -17,7 +17,7 @@ package petitschevaux;
 import java.util.ArrayList;
 
 /**
- * 
+ * Classe Joueur (abstraite)
  */
 public abstract class Joueur {
 	
@@ -45,7 +45,7 @@ public abstract class Joueur {
 
 	/**
 	 * Renvoie la case de départ
-	 * @return Case de départ
+	 * @return this.caseDepart
 	 */
 	public Case getCaseDepart() {
 		return this.caseDepart;
@@ -53,7 +53,7 @@ public abstract class Joueur {
 
 	/**
 	 * Définit la case de départ du joueur passée en paramètre
-	 * @param Case Une case
+	 * @param this.caseDepart
 	 */
 	public void setCaseDepart(Case c) {
 		this.caseDepart = c;

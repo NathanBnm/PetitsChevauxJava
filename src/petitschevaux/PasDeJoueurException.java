@@ -15,7 +15,7 @@
 package petitschevaux;
 
 /**
- * 
+ * Classe PasDeJoueurException (hérite d'Exception)
  */
 public class PasDeJoueurException extends java.lang.Exception {
 

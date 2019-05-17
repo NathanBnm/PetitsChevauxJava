@@ -15,11 +15,12 @@
 package petitschevaux;
 
 /**
- * 
+ * Classe CaseEchelle (hérite de CaseColoree)
  */
 public class CaseEchelle extends CaseColoree {
 
 	/**
+	 * Constructeur
 	 * @param Couleur
 	 */
 	public CaseEchelle(Couleur couleur) {
@@ -29,7 +30,7 @@ public class CaseEchelle extends CaseColoree {
 	/**
 	 *peutPasser permet de vérifier si un obstacle ce trouve sur la route
 	 *, soit un cheval allié.
-	 * @return
+	 * @return true ou false
 	 */
 	public Boolean peutPasser(Pion p) {
 		Boolean res = false;
@@ -42,7 +43,7 @@ public class CaseEchelle extends CaseColoree {
 	/**
 	 *peutSArreter permet de vérifier si un obstacle ce trouve sur la case d'arriver
 	 *, soit un cheval allié.
-	 * @return
+	 * @return true ou false
 	 */
 	public Boolean peutSArreter(Pion p) {
 		Boolean res = false;

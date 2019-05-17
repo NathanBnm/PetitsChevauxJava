@@ -17,7 +17,7 @@ package petitschevaux;
 import java.util.ArrayList;
 
 /**
- * 
+ * Classe Plateau
  */
 public class Plateau {
 
@@ -48,28 +48,28 @@ public class Plateau {
 	}
 
 	/**
-	 * @return
+	 * @return ecuries
 	 */
 	public ArrayList<CaseEcurie> getEcuries() {
 		return ecuries;
 	}
 
 	/**
-	 * @return
+	 * @return echelles
 	 */
 	public ArrayList<ArrayList<CaseEchelle>> getEchelles() {
 		return echelles;
 	}
 
 	/**
-	 * @return
+	 * @return chemin
 	 */
 	public ArrayList<CaseChemin> getChemins() {
 		return chemin;
 	}
 
 	/**
-	 * @return
+	 * Afficher permet d'afficher le contenue des ecuries, du chemin et des echelles
 	 */
 	public void afficher() {
 		System.out.println("Ecuries :");
@@ -87,9 +87,10 @@ public class Plateau {
 	}
 
 	/**
+	 * DeplacerPion permet de déplacer un pion sur sa nouvelle position et de l'enlever de son ancienne
+	 * elle utilise aussi la fonction peutPasser
 	 * @param Pion 
-	 * @param Case 
-	 * @return
+	 * @param Case
 	 */
 	public void deplacerPion(Pion p, Case c) {
 		if(c.peutPasser(p)) {

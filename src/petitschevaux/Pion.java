@@ -15,7 +15,7 @@
 package petitschevaux;
 
 /**
- * 
+ * Classe Pion
  */
 public class Pion {
 
@@ -27,6 +27,7 @@ public class Pion {
 	private Case position = null;
 
 	/**
+	 * Constructeur par défaut
 	 * @param String 
 	 * @param Couleur
 	 */
@@ -43,18 +44,34 @@ public class Pion {
 		return this.couleurPion;
 	}
 	
+	/**
+	 * Renvoie l'Id du pion
+	 * @return Id du pion
+	 */
 	public String getId() {
 		return this.id;
 	}
 
+	/**
+	 * Défini l'Id du pion
+	 * @return Id du pion
+	 */
 	public void setId(String id) {
 		this.id = id;
 	}
 	
+	/**
+	 * Renvoie la position du pion
+	 * @return position du pion
+	 */
 	public Case getPosition() {
 		return this.position;
 	}
 
+	/**
+	 * Défini la position du pion
+	 * @return Couleur du pion
+	 */
 	public void setPosition(Case position) {
 		this.position = position;
 	}

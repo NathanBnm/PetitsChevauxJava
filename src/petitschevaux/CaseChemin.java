@@ -15,7 +15,7 @@
 package petitschevaux;
 
 /**
- * 
+ * Classe CaseChemin (hérite de Case)
  */
 public class CaseChemin extends Case {
 
@@ -26,9 +26,8 @@ public class CaseChemin extends Case {
 	}
 
 	/**
-	 *peutPasser permet de vérifier si un obstacle ce trouve sur la route
-	 *, soit un cheval adverse.
-	 * @return
+	 *peutPasser permet de vérifier si un obstacle ce trouve sur la route, soit un cheval adverse.
+	 * @return true ou false
 	 */
 	public Boolean peutPasser(Pion p) {
 		Boolean res = false;
@@ -48,7 +47,7 @@ public class CaseChemin extends Case {
 	 *peutSArreter permet de vérifier si un obstacle ce trouve sur la case d'arriver.
 	 *(Dans ce cas, peutSArreter retourne toujours true car on peut s'arrêter sur une case
 	 *avec un cheval adverse (le manger) et sur une case avec un cheval allié.)
-	 * @return
+	 * @return true
 	 */
 	public Boolean peutSArreter(Pion p) {
 		return true;

@@ -15,7 +15,7 @@
 package petitschevaux;
 
 /**
- * 
+ * Classe CasePleineException (hérite d'Exception)
  */
 public class CasePleineException extends java.lang.Exception {
 

@@ -15,13 +15,14 @@
 package petitschevaux;
 
 /**
- * 
+ * Classe CaseColoree (hérite de Case)
  */
 public abstract class CaseColoree extends Case {
 
 	private Couleur couleur;
 
 	/**
+	 * Constructeur par défaut
 	 * @param Couleur
 	 */
 	public CaseColoree(Couleur couleur) {

@@ -15,11 +15,12 @@
 package petitschevaux;
 
 /**
- * 
+ * Classe CaseEcurie (hérite de CaseColoree)
  */
 public class CaseEcurie extends CaseColoree {
 
 	/**
+	 * Constructeur par défaut
 	 * @param Couleur
 	 */
 	public CaseEcurie(Couleur couleur) {
@@ -27,14 +28,16 @@ public class CaseEcurie extends CaseColoree {
 	}
 
 	/**
-	 * @return
+	 * 
+	 * @return true
 	 */
 	public Boolean peutPasser(Pion p) {
 		return true;
 	}
 
 	/**
-	 * @return
+	 * 
+	 * @return true
 	 */
 	public Boolean peutSArreter(Pion p) {
 		return true;

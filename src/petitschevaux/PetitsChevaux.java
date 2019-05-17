@@ -20,7 +20,7 @@ package petitschevaux;
 public class PetitsChevaux {
 
 	/**
-	 * Default constructor
+	 * Constructeur par défaut
 	 */
 	public PetitsChevaux() {
 	}

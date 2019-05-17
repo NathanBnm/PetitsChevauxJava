@@ -17,7 +17,7 @@ package petitschevaux;
 import java.util.ArrayList;
 
 /**
- * 
+ * Classe Case (abstraite)
  */
 public abstract class Case {
 
@@ -30,15 +30,16 @@ public abstract class Case {
 	}
 
 	/**
-	 * @return
+	 * getChevaux permet d'avoir la liste de chevaux sur la case
+	 * @return ArrayList de pion
 	 */
 	public ArrayList<Pion> getChevaux() {
 		return chevaux;
 	}
 
 	/**
+	 * ajouterCheval permet d'ajouter un cheval à la liste chevaux
 	 * @param Pion 
-	 * @return
 	 */
 	public void ajouterCheval(Pion p) {
 		chevaux.add(p);

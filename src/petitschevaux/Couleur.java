@@ -15,7 +15,7 @@
 package petitschevaux;
 
 /**
- * 
+ * Enumération Couleur
  */
 public enum Couleur {
 	JAUNE('J'),

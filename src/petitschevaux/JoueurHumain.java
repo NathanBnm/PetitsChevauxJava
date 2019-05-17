@@ -15,7 +15,7 @@
 package petitschevaux;
 
 /**
- * 
+ * Classe JoueurHumain (hérite de Joueur)
  */
 public class JoueurHumain extends Joueur {
 
