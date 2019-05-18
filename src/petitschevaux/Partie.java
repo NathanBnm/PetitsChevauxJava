@@ -113,7 +113,7 @@ public class Partie {
 				if(e.getCouleur() == j.getCouleur()) {
 					e.getChevaux().addAll(j.getCaseDepart().getChevaux());
 					for(int i = 0; i < 4; i++) {
-						e.getChevaux().get(i).setPosition(getPlateau().getEcuries().get(i));
+						e.getChevaux().get(i).setPosition(e);
 					}
 				}
 			}
