@@ -15,7 +15,7 @@
 package petitschevaux;
 
 /**
- * 
+ * Classe PetitsChevaux
  */
 public class PetitsChevaux {
 

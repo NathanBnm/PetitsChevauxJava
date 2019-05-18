@@ -20,7 +20,7 @@ package petitschevaux;
 public class CaseEchelle extends CaseColoree {
 
 	/**
-	 * Constructeur
+	 * Constructeur par défaut
 	 * @param Couleur
 	 */
 	public CaseEchelle(Couleur couleur) {
@@ -28,7 +28,7 @@ public class CaseEchelle extends CaseColoree {
 	}
 
 	/**
-	 *peutPasser permet de vérifier si un obstacle ce trouve sur la route
+	 * peutPasser permet de vérifier si un obstacle ce trouve sur la route
 	 *, soit un cheval allié.
 	 * @return true ou false
 	 */
@@ -41,7 +41,7 @@ public class CaseEchelle extends CaseColoree {
 	}
 
 	/**
-	 *peutSArreter permet de vérifier si un obstacle ce trouve sur la case d'arriver
+	 * peutSArreter permet de vérifier si un obstacle ce trouve sur la case d'arriver
 	 *, soit un cheval allié.
 	 * @return true ou false
 	 */

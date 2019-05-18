@@ -87,7 +87,7 @@ public class Plateau {
 	}
 
 	/**
-	 * DeplacerPion permet de déplacer un pion sur sa nouvelle position et de l'enlever de son ancienne
+	 * deplacerPion permet de déplacer un pion sur sa nouvelle position et de l'enlever de son ancienne,
 	 * elle utilise aussi la fonction peutPasser
 	 * @param Pion 
 	 * @param Case
@@ -95,6 +95,7 @@ public class Plateau {
 	public void deplacerPion(Pion p, Case c) {
 		if(c.peutPasser(p)) {
 			c.ajouterCheval(p);
+			p.getPosition();
 			p.getPosition().getChevaux().remove(p);
 			p.setPosition(c);
 		} else {

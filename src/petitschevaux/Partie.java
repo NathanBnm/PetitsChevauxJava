@@ -31,7 +31,7 @@ public class Partie {
 	private Plateau plateau;
 
 	/**
-	 * Default constructor
+	 * Constructeur par défaut
 	 */
 	public Partie() {
 		de = new Random();
@@ -133,7 +133,7 @@ public class Partie {
 	 * le jeu
 	 */
 	public void jouerUnTour() {
-		
+
 		Scanner sc = new Scanner(System.in);
 		String rep = "";
 		String n = "";
@@ -222,6 +222,29 @@ public class Partie {
 
 				} while(!idValide);
 			}
+			//permet de vérifier si un pion est sortie de l'écurie avant de proposer des déplacements
+		} else if(de > 0 && de < 6 && plateau.getEcuries().size() < 4) {
+			do  {
+				idValide = false;
+
+				System.out.println("Quel pion voulez-vous déplacer " + joueurCourant.getChevaux().toString() + " ? ");
+				n = sc.next();
+
+				int numPion = Integer.parseInt(n);
+
+				if(numPion >= 0 && numPion < 4) {
+					idValide = true;
+					for(int d = 0; d < de; d++) {
+						pion = joueurCourant.getChevaux().get(numPion--);
+						courant = joueurCourant.getChevaux().get(numPion--).getPosition();
+						suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
+						plateau.deplacerPion(pion, suivant);
+					}
+				} else {
+					System.out.println("Id de cheval invalide !");
+				}
+
+			} while(!idValide);
 		} else {
 			System.out.println("Vous passez votre tour");
 			//permet de passer au joueur suivant
@@ -233,11 +256,19 @@ public class Partie {
 	}
 
 	/**
-	 * @return
+	 * estPartieTerminee permet de tester si la partie est fini ou non
+	 * @return true ou false
 	 */
 	public boolean estPartieTerminee() {
-		// TODO implement here
-		return false;
+		boolean res = false;
+		for(int i = 0; i < 4; i++) {
+			for(int j = 3; j < 6; j++) {
+				if(plateau.getEchelles().get(i).get(j).getChevaux().size() == 1) {
+					res = true;
+				}
+			}
+		}
+		return res;
 	}
 	/**
 	 * getJoueurCourant permet d'obtenir le joueur en train de jouer
@@ -272,7 +303,7 @@ public class Partie {
 	}
 
 	/**
-	 * mangerLesPions permet de faire retourner les pions manger à l'écurie
+	 * mangerLesPions permet de faire retourner les pions manger à leur écurie
 	 * @param Case 
 	 */
 	private void mangerLesPions(Case c) {

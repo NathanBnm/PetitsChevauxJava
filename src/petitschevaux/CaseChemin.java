@@ -20,7 +20,7 @@ package petitschevaux;
 public class CaseChemin extends Case {
 
 	/**
-	 * Default constructor
+	 * Constructeur par défaut
 	 */
 	public CaseChemin() {
 	}

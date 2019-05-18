@@ -23,7 +23,7 @@ public abstract class Case {
 
 	private ArrayList<Pion> chevaux;
 	/**
-	 * Default constructor
+	 * Constructeur par défaut
 	 */
 	public Case() {
 		chevaux = new ArrayList<Pion>();
@@ -50,12 +50,16 @@ public abstract class Case {
 	}
 
 	/**
-	 * @return
+	 * peutPasser permet de vérifier si un obstacle ce trouve sur la route
+	 * , ici peutPasser est abstrait, cela permet de l'utiliser sur Case qui est
+	 * une classe abstraite qui étant CaseChemins et CaseColoree
 	 */
 	public abstract Boolean peutPasser(Pion p);
 
 	/**
-	 * @return
+	 * peutSArreter permet de vérifier si un obstacle ce trouve sur la case d'arriver
+	 * , ici peutSArreter est abstrait, cela permet de l'utiliser sur Case qui est
+	 * une classe abstraite qui étant CaseChemins et CaseColoree
 	 */
 	public abstract Boolean peutSArreter(Pion p);
 

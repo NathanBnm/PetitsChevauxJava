@@ -28,7 +28,8 @@ public class CaseEcurie extends CaseColoree {
 	}
 
 	/**
-	 * 
+	 * peutPasser permet de vérifier si un obstacle ce trouve sur la route
+	 * , ici peutPasser est toujours vrai car on peut toujours sortir de son écurie
 	 * @return true
 	 */
 	public Boolean peutPasser(Pion p) {
@@ -36,7 +37,8 @@ public class CaseEcurie extends CaseColoree {
 	}
 
 	/**
-	 * 
+	 * peutSArreter permet de vérifier si un obstacle ce trouve sur la case d'arriver
+	 * , ici peutPasser est toujours vrai car on peut toujours sortir de son écurie
 	 * @return true
 	 */
 	public Boolean peutSArreter(Pion p) {
