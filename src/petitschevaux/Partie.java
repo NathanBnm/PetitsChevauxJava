@@ -250,7 +250,6 @@ public class Partie {
 			//permet de passer au joueur suivant
 			setJoueurCourant(joueurs.get((joueurs.indexOf(joueurCourant) + 1) % 4));
 		}
-		}
 			//permet de vérifier si un pion est sortie de l'écurie avant de proposer des déplacements
 		} else if(de > 0 && de < 6) {
 			do  {
