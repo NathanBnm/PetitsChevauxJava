@@ -151,55 +151,54 @@ public class Partie {
 
 		//Si le dé est = a 6 on demande au joueur si il veut sortir un pion
 		if(de == 6) {
-			System.out.print("Voulez vous sortir un pion ? (O/N)");
-			rep = sc.next();
-			rep = rep.toUpperCase();
-			//Si oui alors lequel veut-il déplacer, si non on lui demande quel pion veut-il déplacer.
-			if(rep.equals("O")) {
-				System.out.println("Vous avez seléctionné Oui");
+			if(!(plateau.getEcuries().get(0).getChevaux().isEmpty()) || !(plateau.getEcuries().get(1).getChevaux().isEmpty()) || !(plateau.getEcuries().get(2).getChevaux().isEmpty()) || !(plateau.getEcuries().get(3).getChevaux().isEmpty())) {
+				System.out.print("Voulez vous sortir un pion ? (O/N)");
+				rep = sc.next();
+				rep = rep.toUpperCase();
+				//Si oui alors lequel veut-il déplacer, si non on lui demande quel pion veut-il déplacer.
+				if(rep.equals("O")) {
+					System.out.println("Vous avez seléctionné Oui");
 
-				do  {
-					idValide = false;
+					do  {
+						idValide = false;
 
-					System.out.println("Lequel voulez vous sortir de l'écurie " + joueurCourant.getChevaux().toString() + " ? ");
-					n = sc.next();
+						System.out.println("Lequel voulez vous sortir de l'écurie " + joueurCourant.getChevaux().toString() + " ? ");
+						n = sc.next();
 
-					int numPion = Integer.parseInt(n);
-					numPion--;
+						int numPion = Integer.parseInt(n);
+						numPion--;
 
-					if(numPion >= 0 && numPion < 4) {
-						idValide = true;
+						if(numPion >= 0 && numPion < 4) {
+							idValide = true;
 
-						pion = joueurCourant.getChevaux().get(numPion);
+							pion = joueurCourant.getChevaux().get(numPion);
 
-						switch(joueurCourant.getCouleur()) {
-						case JAUNE:
-							suivant = plateau.getChemins().get(0);
-							break;
-						case BLEU:
-							suivant = plateau.getChemins().get(14);
-							break;
-						case ROUGE:
-							suivant = plateau.getChemins().get(28);
-							break;
-						case VERT: 
-							suivant = plateau.getChemins().get(42); 
-							break;
+							switch(joueurCourant.getCouleur()) {
+							case JAUNE:
+								suivant = plateau.getChemins().get(0);
+								break;
+							case BLEU:
+								suivant = plateau.getChemins().get(14);
+								break;
+							case ROUGE:
+								suivant = plateau.getChemins().get(28);
+								break;
+							case VERT: 
+								suivant = plateau.getChemins().get(42); 
+								break;
+							}
+
+							plateau.deplacerPion(pion, suivant, de);
+							//permet de passer au joueur suivant
+							setJoueurCourant(joueurs.get((joueurs.indexOf(joueurCourant) + 1) % 4));
+						} else {
+							System.out.println("Id de cheval invalide !");
 						}
+					} while(!idValide);
 
-						plateau.deplacerPion(pion, suivant);
-						//permet de passer au joueur suivant
-						setJoueurCourant(joueurs.get((joueurs.indexOf(joueurCourant) + 1) % 4));
-					} else {
-						System.out.println("Id de cheval invalide !");
-					}
-				} while(!idValide);
-
-			} else {
+			} else if(rep.equals("N")) {
 				//Il faudra vérifier si d'autres pions sont sortis
 				System.out.println("Vous avez seléctionné Non");
-				n = sc.next();
-
 				do  {
 					idValide = false;
 
@@ -207,23 +206,25 @@ public class Partie {
 					n = sc.next();
 
 					int numPion = Integer.parseInt(n);
+					numPion--;
 
 					if(numPion >= 0 && numPion < 4) {
 						idValide = true;
 						for(int d = 0; d < de; d++) {
-							pion = joueurCourant.getChevaux().get(numPion--);
-							courant = joueurCourant.getChevaux().get(numPion--).getPosition();
+							pion = joueurCourant.getChevaux().get(numPion);
+							courant = joueurCourant.getChevaux().get(numPion).getPosition();
 							suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
-							plateau.deplacerPion(pion, suivant);
+							plateau.deplacerPion(pion, suivant, de);
 						}
 					} else {
 						System.out.println("Id de cheval invalide !");
 					}
 
 				} while(!idValide);
+				//permet de passer au joueur suivant
+				setJoueurCourant(joueurs.get((joueurs.indexOf(joueurCourant) + 1) % 4));
 			}
-			//permet de vérifier si un pion est sortie de l'écurie avant de proposer des déplacements
-		} else if(de > 0 && de < 6 && plateau.getEcuries().size() < 4) {
+		} else {
 			do  {
 				idValide = false;
 
@@ -231,20 +232,51 @@ public class Partie {
 				n = sc.next();
 
 				int numPion = Integer.parseInt(n);
+				numPion--;
 
 				if(numPion >= 0 && numPion < 4) {
 					idValide = true;
 					for(int d = 0; d < de; d++) {
-						pion = joueurCourant.getChevaux().get(numPion--);
-						courant = joueurCourant.getChevaux().get(numPion--).getPosition();
+						pion = joueurCourant.getChevaux().get(numPion);
+						courant = joueurCourant.getChevaux().get(numPion).getPosition();
 						suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
-						plateau.deplacerPion(pion, suivant);
+						plateau.deplacerPion(pion, suivant, de);
 					}
 				} else {
 					System.out.println("Id de cheval invalide !");
 				}
 
 			} while(!idValide);
+			//permet de passer au joueur suivant
+			setJoueurCourant(joueurs.get((joueurs.indexOf(joueurCourant) + 1) % 4));
+		}
+		}
+			//permet de vérifier si un pion est sortie de l'écurie avant de proposer des déplacements
+		} else if(de > 0 && de < 6) {
+			do  {
+				idValide = false;
+
+				System.out.println("Quel pion voulez-vous déplacer " + joueurCourant.getChevaux().toString() + " ? ");
+				n = sc.next();
+
+				int numPion = Integer.parseInt(n);
+				numPion--;
+
+				if(numPion >= 0 && numPion < 4) {
+					idValide = true;
+					for(int d = 0; d < de; d++) {
+						pion = joueurCourant.getChevaux().get(numPion);
+						courant = joueurCourant.getChevaux().get(numPion).getPosition();
+						suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
+						plateau.deplacerPion(pion, suivant, de);
+					}
+				} else {
+					System.out.println("Id de cheval invalide !");
+				}
+
+			} while(!idValide);
+			//permet de passer au joueur suivant
+			setJoueurCourant(joueurs.get((joueurs.indexOf(joueurCourant) + 1) % 4));
 		} else {
 			System.out.println("Vous passez votre tour");
 			//permet de passer au joueur suivant

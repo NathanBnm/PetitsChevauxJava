@@ -26,12 +26,13 @@ public class CaseChemin extends Case {
 	}
 
 	/**
-	 *peutPasser permet de vérifier si un obstacle ce trouve sur la route, soit un cheval adverse.
+	 * peutPasser permet de vérifier si un obstacle ce trouve sur la route, soit un cheval adverse.
 	 * @return true ou false
 	 */
 	public Boolean peutPasser(Pion p) {
 		Boolean res = false;
 		if(getChevaux().size() == 0) {
+			getChevaux().size();
 			res = true;
 		} else  {
 			for(Pion c : getChevaux()) {

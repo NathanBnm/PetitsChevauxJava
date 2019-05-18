@@ -79,7 +79,7 @@ public class Plateau {
 		System.out.println();
 		System.out.println("Chemin : " + chemin.toString());
 		System.out.println();
-		
+
 		for(int i = 0; i < 4; i++) {
 			System.out.println("Echelle (" + Couleur.values()[i] + ") " + echelles.get(i).toString());
 		}
@@ -92,13 +92,22 @@ public class Plateau {
 	 * @param Pion 
 	 * @param Case
 	 */
-	public void deplacerPion(Pion p, Case c) {
-		if(c.peutPasser(p)) {
+	public void deplacerPion(Pion p, Case c, int de) {
+		for(int i = 0; i < de-1; i++) {
+			if(c.peutPasser(p)) {
+				p.getPosition().getChevaux().remove(p);
+				c.ajouterCheval(p);
+				p.setPosition(c);
+			} else {
+				System.out.println("Le cheval ne peut pas passer !");
+			}
+		}
+		if(c.peutSArreter(p)) {
 			p.getPosition().getChevaux().remove(p);
 			c.ajouterCheval(p);
 			p.setPosition(c);
 		} else {
-			System.out.println("Le cheval ne peut pas passer !");
+			System.out.println("Le cheval ne peut pas s'arrêter !");
 		}
 	}
 
