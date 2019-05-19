@@ -115,6 +115,7 @@ public class Plateau {
 				initial.ajouterCheval(p);
 				p.setPosition(initial);
 			}
+
 	}
 
 }

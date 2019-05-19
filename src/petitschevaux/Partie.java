@@ -132,7 +132,7 @@ public class Partie {
 	 * La fonction jouerUnTour est la fonction permettant de faire intéragire les joueurs avec
 	 * le jeu
 	 */
-	public void jouerUnTour() {
+	public void jouerUnTour(int maxtour) {
 
 		Scanner sc = new Scanner(System.in);
 		String rep = "";
@@ -141,12 +141,12 @@ public class Partie {
 		Pion pion = null;
 		Case courant = null;
 		Case suivant = null;
+		Case initial = null;
 
 		Boolean idValide = false;
 
 		int de = lancerDe();
 		//pour limiter le nombre de fois ou faire 6 fais rejouer le joueur courant (2 fois)
-		int maxtour = 0;
 
 		System.out.println("Au tour de " + joueurCourant.getNom() + " (" + joueurCourant.getCouleur() + ")");
 		System.out.println("La valeur du dé est " + de);
@@ -200,7 +200,7 @@ public class Partie {
 										suivant = plateau.getChemins().get(42); 
 										break;
 									}
-									if(suivant == plateau.getChemins().get(plateau.getChemins().indexOf(courant) + de)) {
+									if(suivant == plateau.getChemins().get(plateau.getChemins().indexOf(initial) + de)) {
 										mangerLesPions(suivant);
 									}
 									plateau.deplacerPion(pion, suivant, de);
@@ -231,6 +231,7 @@ public class Partie {
 
 									if(numPion >= 0 && numPion < 4) {
 										idValide = true;
+										initial = joueurCourant.getChevaux().get(numPion).getPosition();
 										for(int d = 0; d < de; d++) {
 											pion = joueurCourant.getChevaux().get(numPion);
 											courant = joueurCourant.getChevaux().get(numPion).getPosition();
@@ -465,7 +466,7 @@ public class Partie {
 												};
 												break;
 											}
-											if(suivant == plateau.getChemins().get(plateau.getChemins().indexOf(courant) + de)) {
+											if(suivant == plateau.getChemins().get(plateau.getChemins().indexOf(initial) + de)) {
 												mangerLesPions(suivant);
 											}
 											plateau.deplacerPion(pion, suivant, de);
@@ -525,7 +526,7 @@ public class Partie {
 									else {
 										suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
 									}
-									if(suivant == plateau.getChemins().get(plateau.getChemins().indexOf(courant) + de)) {
+									if(suivant == plateau.getChemins().get(plateau.getChemins().indexOf(initial) + de)) {
 										mangerLesPions(suivant);
 									}
 									plateau.deplacerPion(pion, suivant, de);
@@ -603,12 +604,16 @@ public class Partie {
 	 */
 	private void mangerLesPions(Case c) {
 		for(int i = 0; i < 4; i++) {
-			if(c.getChevaux().size() != 0 && c.getChevaux().get(i).getCouleur() != joueurCourant.getCouleur()) {
-				Pion cheval = c.getChevaux().get(i);
-				for(int j = 0; j < 4; j++) {
-					if (plateau.getEcuries().get(j).getCouleur().equals(cheval.getCouleur())) {
-						cheval.getPosition().getChevaux().remove(i);
-						cheval.setPosition(plateau.getEcuries().get(j));
+			if(!(c.getChevaux().isEmpty())) {
+				System.out.println(c.getChevaux().get(i).getCouleur());
+				System.out.println(joueurCourant.getCouleur());
+				if(c.getChevaux().get(i).getCouleur() != joueurCourant.getCouleur()) {
+					Pion cheval = c.getChevaux().get(i);
+					for(int j = 0; j < 4; j++) {
+						if (plateau.getEcuries().get(j).getCouleur().equals(cheval.getCouleur())) {
+							cheval.getPosition().getChevaux().remove(i);
+							cheval.setPosition(plateau.getEcuries().get(j));
+						}
 					}
 				}
 			}
