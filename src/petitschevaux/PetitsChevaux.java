@@ -32,11 +32,26 @@ public class PetitsChevaux {
 	 * @throws CouleurInvalideException 
 	 */
 	public static void main(String[] args) {
-		System.out.println("Jeu des petits chevaux");
+		System.out.println("   _____     _   _ _          _____ _                       ");
+		System.out.println("  |  _  |___| |_|_| |_ ___   |     | |_ ___ _ _ ___ _ _ _ _ ");
+		System.out.println("  |   __| -_|  _| |  _|_ -|  |   --|   | -_| | | .'| | |_'_|");
+		System.out.println("  |__|  |___|_| |_|_| |___|  |_____|_|_|___|\\_/|__,|___|_,_|");
+		System.out.println("");                                                           
+		System.out.println("                                               Version 0.0.1");
+		System.out.println("");  
+		System.out.println("                 Nathan Bonnemains <21801526@etu.unicaen.fr>");
+		System.out.println("                 Gérémy L'Ecuyer <21802888@etu.unicaen.fr>");
+		System.out.println("");
+		System.out.println("Bienvenue dans le jeu des petits chevaux !");
+		System.out.println("Commençons par ajouter des joueurs :");
+		System.out.println("");
+
 		Partie partie = new Partie();
+		
 		partie.initialiserJoueurs(4);
 		partie.initialiserPlateau();
 		partie.getPlateau().afficher();
+		
 		do {
 			partie.jouerUnTour();
 			partie.getPlateau().afficher();
