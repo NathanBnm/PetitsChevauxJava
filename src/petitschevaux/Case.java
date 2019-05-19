@@ -52,14 +52,14 @@ public abstract class Case {
 	/**
 	 * peutPasser permet de vérifier si un obstacle ce trouve sur la route
 	 * , ici peutPasser est abstrait, cela permet de l'utiliser sur Case qui est
-	 * une classe abstraite qui étant CaseChemins et CaseColoree
+	 * une classe abstraite qui étend CaseChemins et CaseColoree
 	 */
 	public abstract Boolean peutPasser(Pion p);
 
 	/**
 	 * peutSArreter permet de vérifier si un obstacle ce trouve sur la case d'arriver
 	 * , ici peutSArreter est abstrait, cela permet de l'utiliser sur Case qui est
-	 * une classe abstraite qui étant CaseChemins et CaseColoree
+	 * une classe abstraite qui étend CaseChemins et CaseColoree
 	 */
 	public abstract Boolean peutSArreter(Pion p);
 

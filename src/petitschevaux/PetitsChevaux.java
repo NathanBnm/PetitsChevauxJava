@@ -15,7 +15,9 @@
 package petitschevaux;
 
 /**
- * Classe PetitsChevaux
+ * Classe principale (PetitsChevaux)
+ * @author Nathan Bonnemains & Gérémy L'Ecuyer
+ * @version 1.0
  */
 public class PetitsChevaux {
 
