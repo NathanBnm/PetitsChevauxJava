@@ -155,12 +155,14 @@ public class Partie {
 		if(de == 6) {
 			maxtour++;
 			for (int i = 0; i < plateau.getEcuries().size(); i++) {
+				//tester si l'écurie qu'on regarde est bien celle du joueur courant
 				if (plateau.getEcuries().get(i).getCouleur().equals(joueurCourant.getCouleur())) {
+					//tester si l'écurie n'est pas vide, si elle est vide on ne propose pas de sortir un pion
 					if (!(plateau.getEcuries().get(i).getChevaux().isEmpty())) {
 						System.out.print("Voulez vous sortir un pion ? (O/N)");
 						rep = sc.next();
 						rep = rep.toUpperCase(); 
-						//Si oui alors lequel veut-il déplacer, si non on lui demande quel pion veut-il déplacer.
+						//Si oui alors lequel veut-il déplacer
 						if(rep.equals("O")) {
 							System.out.println("Vous avez seléctionné Oui");
 
@@ -199,20 +201,24 @@ public class Partie {
 									System.out.println("Id de cheval invalide !");
 								}
 							} while(!idValide);
-
+							//si non on lui demande quel pion veut-il déplacer.
 						} else if(rep.equals("N")) {
 							System.out.println("Vous avez seléctionné Non");
 							//permet de vérifier si un pion est sortie de l'écurie avant de proposer des déplacements
 							if(plateau.getEcuries().get(i).getChevaux().size() < 4) {
 								do  {
 									idValide = false;
+									int numPion;
+									//tant que le joueur donne un pion qui est dans l'écurie on lui demande de reséléctionner un pion valide
+									do {
+										System.out.println("Quel pion voulez-vous déplacer " + joueurCourant.getChevaux().toString()+ " ? ");
+										n = sc.next();
 
-									System.out.println("Quel pion voulez-vous déplacer " + joueurCourant.getChevaux().toString() + " ? ");
-									n = sc.next();
-
-									int numPion = Integer.parseInt(n);
-									numPion--;
-
+										numPion = Integer.parseInt(n);
+										numPion--;
+										System.out.println("Ce pion est dans l'écurie !");
+									} while(plateau.getEcuries().get(i).getChevaux().contains(joueurCourant.getChevaux().get(numPion)));
+									
 									if(numPion >= 0 && numPion < 4) {
 										idValide = true;
 										for(int d = 0; d < de; d++) {
@@ -231,7 +237,9 @@ public class Partie {
 									}
 
 								} while(!idValide);
-							} else {
+							} 
+							//sinon on passe le tour
+							else {
 								System.out.println("Vous passez votre tour");
 							}
 							System.out.println("Appuyer pour continuer");
@@ -248,17 +256,23 @@ public class Partie {
 			}
 		} else if(de > 0 && de < 6) {
 			for (int i = 0; i < plateau.getEcuries().size(); i++) {
+				//tester si l'écurie qu'on regarde est bien celle du joueur courant
 				if (plateau.getEcuries().get(i).getCouleur().equals(joueurCourant.getCouleur())) {
+					//permet de vérifier si un pion est sortie de l'écurie avant de proposer des déplacements
 					if (plateau.getEcuries().get(i).getChevaux().size() < 4) {
 						do  {
 							idValide = false;
+							int numPion;
+							//tant que le joueur donne un pion qui est dans l'écurie on lui demande de reséléctionner un pion valide
+							do {
+								System.out.println("Quel pion voulez-vous déplacer " + joueurCourant.getChevaux().toString()+ " ? ");
+								n = sc.next();
 
-							System.out.println("Quel pion voulez-vous déplacer " + joueurCourant.getChevaux().toString() + " ? ");
-							n = sc.next();
-
-							int numPion = Integer.parseInt(n);
-							numPion--;
-
+								numPion = Integer.parseInt(n);
+								numPion--;
+								System.out.println("Ce pion est dans l'écurie !\n");
+							} while(plateau.getEcuries().get(i).getChevaux().contains(joueurCourant.getChevaux().get(numPion)));
+							
 							if(numPion >= 0 && numPion < 4) {
 								idValide = true;
 								for(int d = 0; d < de; d++) {
@@ -277,7 +291,9 @@ public class Partie {
 							}
 
 						} while(!idValide);
-					} else {
+					}
+					//sinon on passe le tour
+					else {
 						System.out.println("Vous passez votre tour");
 					}
 
