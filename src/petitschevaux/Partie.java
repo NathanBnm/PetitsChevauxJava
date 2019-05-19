@@ -148,8 +148,11 @@ public class Partie {
 		//pour limiter le nombre de fois ou faire 6 fais rejouer le joueur courant (2 fois)
 		int maxtour = 0;
 
+		System.out.println("############");
+		System.out.println("");
 		System.out.println("Au tour de " + joueurCourant.getNom() + " (" + joueurCourant.getCouleur() + ")");
 		System.out.println("La valeur du dé est " + de);
+		System.out.println("");
 
 		//Si le dé est = a 6 on demande au joueur si il veut sortir un pion
 		if(de == 6) {
@@ -159,7 +162,7 @@ public class Partie {
 				if (plateau.getEcuries().get(i).getCouleur().equals(joueurCourant.getCouleur())) {
 					//tester si l'écurie n'est pas vide, si elle est vide on ne propose pas de sortir un pion
 					if (!(plateau.getEcuries().get(i).getChevaux().isEmpty())) {
-						System.out.print("Voulez vous sortir un pion ? (O/N)");
+						System.out.print("Voulez vous sortir un pion ? (O/N) ");
 						rep = sc.next();
 						rep = rep.toUpperCase(); 
 						//Si oui alors lequel veut-il déplacer
