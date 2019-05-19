@@ -93,22 +93,28 @@ public class Plateau {
 	 * @param Case
 	 */
 	public void deplacerPion(Pion p, Case c, int de) {
+		Case initial = p.getPosition();
+		boolean verif = false;
 		for(int i = 0; i < de-1; i++) {
 			if(c.peutPasser(p)) {
 				p.getPosition().getChevaux().remove(p);
 				c.ajouterCheval(p);
 				p.setPosition(c);
-			} else {
+			} else if (verif == false){
 				System.out.println("Le cheval ne peut pas passer !");
+				verif = true;
 			}
 		}
-		if(c.peutSArreter(p)) {
-			p.getPosition().getChevaux().remove(p);
-			c.ajouterCheval(p);
-			p.setPosition(c);
-		} else {
-			System.out.println("Le cheval ne peut pas s'arrêter !");
-		}
+			if(c.peutSArreter(p) && verif == false) {
+				p.getPosition().getChevaux().remove(p);
+				c.ajouterCheval(p);
+				p.setPosition(c);
+			} else {
+				System.out.println("Le cheval ne peut pas s'arrêter !");
+				p.getPosition().getChevaux().remove(p);
+				initial.ajouterCheval(p);
+				p.setPosition(initial);
+			}
 	}
 
 }

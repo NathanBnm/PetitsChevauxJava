@@ -32,7 +32,6 @@ public class CaseChemin extends Case {
 	public Boolean peutPasser(Pion p) {
 		Boolean res = false;
 		if(getChevaux().size() == 0) {
-			getChevaux().size();
 			res = true;
 		} else  {
 			for(Pion c : getChevaux()) {

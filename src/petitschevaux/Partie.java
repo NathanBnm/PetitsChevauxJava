@@ -168,12 +168,18 @@ public class Partie {
 
 							do  {
 								idValide = false;
+								int numPion;
+								//tant que le joueur donne un pion qui n'est pas dans l'écurie on lui demande de reséléctionner un pion valide
+								do {
+									System.out.println("Lequel voulez vous sortir de l'écurie " + plateau.getEcuries().get(i).getChevaux().toString() + " ? ");
+									n = sc.next();
 
-								System.out.println("Lequel voulez vous sortir de l'écurie " + plateau.getEcuries().get(i).getChevaux().toString() + " ? ");
-								n = sc.next();
-
-								int numPion = Integer.parseInt(n);
-								numPion--;
+									numPion = Integer.parseInt(n);
+									numPion--;
+									if(!(plateau.getEcuries().get(i).getChevaux().contains(joueurCourant.getChevaux().get(numPion)))) {
+										System.out.println("Ce pion n'est pas dans l'écurie !\n");
+									}
+								} while(!(plateau.getEcuries().get(i).getChevaux().contains(joueurCourant.getChevaux().get(numPion))));
 
 								if(numPion >= 0 && numPion < 4) {
 									idValide = true;
@@ -216,9 +222,11 @@ public class Partie {
 
 										numPion = Integer.parseInt(n);
 										numPion--;
-										System.out.println("Ce pion est dans l'écurie !");
+										if(plateau.getEcuries().get(i).getChevaux().contains(joueurCourant.getChevaux().get(numPion))) {
+											System.out.println("Ce pion est dans l'écurie !\n");
+										}
 									} while(plateau.getEcuries().get(i).getChevaux().contains(joueurCourant.getChevaux().get(numPion)));
-									
+
 									if(numPion >= 0 && numPion < 4) {
 										idValide = true;
 										for(int d = 0; d < de; d++) {
@@ -250,6 +258,7 @@ public class Partie {
 					}
 				}
 			}
+			//Si c'est la deuxième fois que le joueur fais 6 on passe quand même au joueur suivant
 			if(maxtour%2 == 0) {
 				//permet de passer au joueur suivant
 				setJoueurCourant(joueurs.get((joueurs.indexOf(joueurCourant) + 1) % 4));
@@ -270,9 +279,11 @@ public class Partie {
 
 								numPion = Integer.parseInt(n);
 								numPion--;
-								System.out.println("Ce pion est dans l'écurie !\n");
+								if(plateau.getEcuries().get(i).getChevaux().contains(joueurCourant.getChevaux().get(numPion))) {
+									System.out.println("Ce pion est dans l'écurie !\n");
+								}
 							} while(plateau.getEcuries().get(i).getChevaux().contains(joueurCourant.getChevaux().get(numPion)));
-							
+
 							if(numPion >= 0 && numPion < 4) {
 								idValide = true;
 								for(int d = 0; d < de; d++) {
@@ -358,8 +369,14 @@ public class Partie {
 	 * @param Case 
 	 */
 	private void mangerLesPions(Case c) {
-		// TODO implement here
-		return;
+		for(int i = 0; i < 4; i++) {
+			Pion cheval = c.getChevaux().get(i);
+			for(int j = 0; j < 4; j++) {
+				if (plateau.getEcuries().get(j).getCouleur().equals(cheval.getCouleur())) {
+					cheval.getPosition().getChevaux().remove(i);
+					cheval.setPosition(plateau.getEcuries().get(j));
+				}
+			}
+		}
 	}
-
 }
