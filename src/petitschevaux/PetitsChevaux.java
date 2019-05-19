@@ -51,9 +51,9 @@ public class PetitsChevaux {
 		partie.initialiserJoueurs(4);
 		partie.initialiserPlateau();
 		partie.getPlateau().afficher();
-		
+		int maxtour = 0;
 		do {
-			partie.jouerUnTour();
+			partie.jouerUnTour(maxtour);
 			partie.getPlateau().afficher();
 		} while(!partie.estPartieTerminee());
 	}
