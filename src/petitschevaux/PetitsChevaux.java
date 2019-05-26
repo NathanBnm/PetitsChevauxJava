@@ -46,15 +46,16 @@ public class PetitsChevaux {
 		System.out.println("Commençons par ajouter des joueurs :");
 		System.out.println("");
 
+		int maxtour = 0;
 		Partie partie = new Partie();
 		
 		partie.initialiserJoueurs(4);
 		partie.initialiserPlateau();
 		partie.getPlateau().afficher();
-		int maxtour = 0;
 		do {
 			partie.jouerUnTour(maxtour);
 			partie.getPlateau().afficher();
+			maxtour++;
 		} while(!partie.estPartieTerminee());
 	}
 

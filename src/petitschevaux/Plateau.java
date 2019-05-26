@@ -85,16 +85,16 @@ public class Plateau {
 			System.out.println("Echelle (" + Couleur.values()[i] + ") " + echelles.get(i).toString());
 		}
 		System.out.println();
-		*/
-		
+		 */
+
 		System.out.println("");
 
-		
+
 		//Affichage des écuries
 		for(int i = 0; i < 4; i++) {
 			System.out.println("Ecurie (" + Couleur.values()[i] + ") " + ecuries.get(i).toString());
 		}
-				
+
 		//Affichage des écuries jaune et bleue et des cases intermédiaires
 		System.out.println(" __________        __________");
 		System.out.print("|          |" + chemin.get(12).getChevaux().toString() + chemin.get(13).getChevaux().toString() + chemin.get(14).getChevaux().toString() + "|          |");
@@ -109,55 +109,55 @@ public class Plateau {
 		System.out.println("");
 		System.out.print("            " + chemin.get(7).getChevaux().toString() + echelles.get(1).get(4).getChevaux().toString() + chemin.get(19).getChevaux().toString() + "            ");
 		System.out.println("");
-		
+
 		//Affichage des cases 1 à 7;
 		for(int i = 0; i <= 6; i++) { 
 			System.out.print(chemin.get(i).getChevaux().toString());
 		}
-		
+
 		System.out.print(echelles.get(1).get(5).getChevaux().toString());
-		
+
 		System.out.print(chemin.get(20).getChevaux().toString());
-		
+
 		for(int i = 21; i <= 26; i++) { 
 			System.out.print(chemin.get(i).getChevaux().toString());
 		}
-		
+
 		System.out.println("");
-		
+
 		//Affichage de la case 56
 		System.out.print(chemin.get(55).getChevaux().toString());
-		
+
 		//Affichage de l'échelle jaune
 		for(int i = 0; i <= 5; i++) { 
 			System.out.print(echelles.get(0).get(i).getChevaux().toString());
 		}
-		
+
 		System.out.print("()");
-		
+
 		//Affichage de l'échelle rouge
 		for(int i = 5; i >= 0; i--) { 
 			System.out.print(echelles.get(2).get(i).getChevaux().toString());
 		}
-		
+
 		System.out.print(chemin.get(27).getChevaux().toString());
-		
+
 		System.out.println("");
-		
+
 		//Affichage des cases 49 à 55
 		for(int i = 54; i >= 48; i--) {
 			System.out.print(chemin.get(i).getChevaux().toString());
 		}
-		
+
 		System.out.print(echelles.get(3).get(5).getChevaux().toString());
-		
+
 		//Affichage des cases 49 à 55
 		for(int i = 34; i >= 28; i--) {
 			System.out.print(chemin.get(i).getChevaux().toString());
 		}
-		
+
 		System.out.println("");
-		
+
 		//Affichage des écuries verte et rouge et des cases intermédiaires
 		System.out.print(" __________ " + chemin.get(47).getChevaux().toString() + echelles.get(3).get(4).getChevaux().toString() + chemin.get(35).getChevaux().toString() + " __________");
 		System.out.println("");
@@ -171,7 +171,7 @@ public class Plateau {
 		System.out.println("");
 		System.out.print("|__________|" + chemin.get(42).getChevaux().toString() + chemin.get(41).getChevaux().toString() + chemin.get(40).getChevaux().toString() + "|__________|");
 		System.out.println("");
-		
+
 		System.out.println("");
 	}
 
@@ -181,29 +181,24 @@ public class Plateau {
 	 * @param Pion 
 	 * @param Case
 	 */
-	public void deplacerPion(Pion p, Case c, int de) {
-		Case initial = p.getPosition();
+	public void deplacerPion(Pion p, Case c, int de, Case init) {
 		boolean verif = false;
-		for(int i = 0; i < de-1; i++) {
-			if(c.peutPasser(p)) {
-				p.getPosition().getChevaux().remove(p);
-				c.ajouterCheval(p);
-				p.setPosition(c);
-			} else if (verif == false){
-				System.out.println("Le cheval ne peut pas passer !");
-				verif = true;
-			}
+		
+		if(!(c.peutPasser(p)) && verif == false) {
+			System.out.println("Le cheval ne peut pas passer !");
+			verif = true;
 		}
-			if(c.peutSArreter(p) && verif == false) {
-				p.getPosition().getChevaux().remove(p);
-				c.ajouterCheval(p);
-				p.setPosition(c);
-			} else {
-				System.out.println("Le cheval ne peut pas s'arrêter !");
-				p.getPosition().getChevaux().remove(p);
-				initial.ajouterCheval(p);
-				p.setPosition(initial);
-			}
+		
+		if(c.peutSArreter(p) && verif == false) {
+			p.getPosition().getChevaux().remove(p);
+			c.ajouterCheval(p);
+			p.setPosition(c);
+		} else {
+			System.out.println("Le cheval ne peut pas s'arrêter !");
+			p.getPosition().getChevaux().remove(p);
+			init.ajouterCheval(p);
+			p.setPosition(init);
+		}
 
 	}
 

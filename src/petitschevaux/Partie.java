@@ -156,7 +156,6 @@ public class Partie {
 
 		//Si le dé est = a 6 on demande au joueur si il veut sortir un pion
 		if(de == 6) {
-			maxtour++;
 			for (int i = 0; i < plateau.getEcuries().size(); i++) {
 				//tester si l'écurie qu'on regarde est bien celle du joueur courant
 				if (plateau.getEcuries().get(i).getCouleur().equals(joueurCourant.getCouleur())) {
@@ -187,6 +186,8 @@ public class Partie {
 								if(numPion >= 0 && numPion < 4) {
 									idValide = true;
 
+									initial = joueurCourant.getChevaux().get(numPion).getPosition();
+
 									pion = joueurCourant.getChevaux().get(numPion);
 
 									switch(joueurCourant.getCouleur()) {
@@ -203,10 +204,8 @@ public class Partie {
 										suivant = plateau.getChemins().get(42); 
 										break;
 									}
-									if(suivant == plateau.getChemins().get(plateau.getChemins().indexOf(initial) + de)) {
-										mangerLesPions(suivant);
-									}
-									plateau.deplacerPion(pion, suivant, de);
+									mangerLesPions(suivant);
+									plateau.deplacerPion(pion, suivant, de, initial);
 
 								} else {
 									System.out.println("Id de cheval invalide !");
@@ -234,7 +233,9 @@ public class Partie {
 
 									if(numPion >= 0 && numPion < 4) {
 										idValide = true;
+
 										initial = joueurCourant.getChevaux().get(numPion).getPosition();
+
 										for(int d = 0; d < de; d++) {
 											pion = joueurCourant.getChevaux().get(numPion);
 											courant = joueurCourant.getChevaux().get(numPion).getPosition();
@@ -469,10 +470,10 @@ public class Partie {
 												};
 												break;
 											}
-											if(suivant == plateau.getChemins().get(plateau.getChemins().indexOf(initial) + de)) {
+											if(suivant == plateau.getChemins().get((plateau.getChemins().indexOf(initial) + de)%56)) {
 												mangerLesPions(suivant);
 											}
-											plateau.deplacerPion(pion, suivant, de);
+											plateau.deplacerPion(pion, suivant, de, initial);
 										}
 									} else {
 										System.out.println("Id de cheval invalide !");
@@ -487,8 +488,6 @@ public class Partie {
 							System.out.println("Appuyer pour continuer");
 							sc.nextLine();
 						}
-					} else {
-						System.out.println("Veuillez répondre oui ou non...");
 					}
 				}
 			}
@@ -520,6 +519,9 @@ public class Partie {
 
 							if(numPion >= 0 && numPion < 4) {
 								idValide = true;
+
+								initial = joueurCourant.getChevaux().get(numPion).getPosition();
+
 								for(int d = 0; d < de; d++) {
 									pion = joueurCourant.getChevaux().get(numPion);
 									courant = joueurCourant.getChevaux().get(numPion).getPosition();
@@ -529,10 +531,236 @@ public class Partie {
 									else {
 										suivant = plateau.getChemins().get(plateau.getChemins().indexOf(courant) + 1);
 									}
-									if(suivant == plateau.getChemins().get(plateau.getChemins().indexOf(initial) + de)) {
+									switch(joueurCourant.getCouleur()) {
+									case JAUNE:
+										if(suivant == plateau.getChemins().get(0)) {
+											if(de == 1) {
+												suivant = plateau.getEchelles().get(0).get(0);
+											}
+											else {
+												System.out.println("Vous êtes devant l'échelle !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(0).get(0)) {
+											if(de == 2) {
+												suivant = plateau.getEchelles().get(0).get(1);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(0).get(1)) {
+											if(de == 3) {
+												suivant = plateau.getEchelles().get(0).get(2);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(0).get(2)) {
+											if(de == 4) {
+												suivant = plateau.getEchelles().get(0).get(3);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(0).get(3)) {
+											if(de == 5) {
+												suivant = plateau.getEchelles().get(0).get(4);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(0).get(4)) {
+											if(de == 6) {
+												suivant = plateau.getEchelles().get(0).get(5);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										};
+										break;
+									case BLEU:
+										if(suivant == plateau.getChemins().get(14)) {
+											if(de == 1) {
+												suivant = plateau.getEchelles().get(1).get(0);
+											}
+											else {
+												System.out.println("Vous êtes devant l'échelle !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(1).get(0)) {
+											if(de == 2) {
+												suivant = plateau.getEchelles().get(1).get(1);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(1).get(1)) {
+											if(de == 3) {
+												suivant = plateau.getEchelles().get(1).get(2);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(1).get(2)) {
+											if(de == 4) {
+												suivant = plateau.getEchelles().get(1).get(3);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(1).get(3)) {
+											if(de == 5) {
+												suivant = plateau.getEchelles().get(1).get(4);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(1).get(4)) {
+											if(de == 6) {
+												suivant = plateau.getEchelles().get(1).get(5);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										};
+										break;
+									case ROUGE:
+										if(suivant == plateau.getChemins().get(28)){
+											if(de == 1) {
+												suivant = plateau.getEchelles().get(2).get(0);
+											}
+											else {
+												System.out.println("Vous êtes devant l'échelle !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(2).get(0)) {
+											if(de == 2) {
+												suivant = plateau.getEchelles().get(2).get(1);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(2).get(1)) {
+											if(de == 3) {
+												suivant = plateau.getEchelles().get(2).get(2);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(2).get(2)) {
+											if(de == 4) {
+												suivant = plateau.getEchelles().get(2).get(3);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(2).get(3)) {
+											if(de == 5) {
+												suivant = plateau.getEchelles().get(2).get(4);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(2).get(4)) {
+											if(de == 6) {
+												suivant = plateau.getEchelles().get(2).get(5);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										};
+										break;
+									case VERT: 
+										if(suivant == plateau.getChemins().get(42)) {
+											if(de == 1) {
+												suivant = plateau.getEchelles().get(3).get(0);
+											}
+											else {
+												System.out.println("Vous êtes devant l'échelle !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(3).get(0)) {
+											if(de == 2) {
+												suivant = plateau.getEchelles().get(3).get(1);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(3).get(1)) {
+											if(de == 3) {
+												suivant = plateau.getEchelles().get(3).get(2);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(3).get(2)) {
+											if(de == 4) {
+												suivant = plateau.getEchelles().get(3).get(3);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(3).get(3)) {
+											if(de == 5) {
+												suivant = plateau.getEchelles().get(3).get(4);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										}
+										else if(courant == plateau.getEchelles().get(3).get(4)) {
+											if(de == 6) {
+												suivant = plateau.getEchelles().get(3).get(5);
+											}
+											else {
+												System.out.println("Vous ne pouvez pas avancer !");
+												suivant = courant;
+											}
+										};
+										break;
+									}
+									if(suivant == plateau.getChemins().get((plateau.getChemins().indexOf(initial) + de)%56)) {
 										mangerLesPions(suivant);
 									}
-									plateau.deplacerPion(pion, suivant, de);
+									plateau.deplacerPion(pion, suivant, de, initial);
 								}
 							} else {
 								System.out.println("Id de cheval invalide !");
@@ -606,20 +834,21 @@ public class Partie {
 	 * @param Case 
 	 */
 	private void mangerLesPions(Case c) {
-		for(int i = 0; i < 4; i++) {
-			if(!(c.getChevaux().isEmpty())) {
-				System.out.println(c.getChevaux().get(i).getCouleur());
-				System.out.println(joueurCourant.getCouleur());
-				if(c.getChevaux().get(i).getCouleur() != joueurCourant.getCouleur()) {
-					Pion cheval = c.getChevaux().get(i);
+		if(!(c.getChevaux().isEmpty())) {
+			if(c.getChevaux().get(0).getCouleur() != joueurCourant.getCouleur()) {
 					for(int j = 0; j < 4; j++) {
-						if (plateau.getEcuries().get(j).getCouleur().equals(cheval.getCouleur())) {
-							cheval.getPosition().getChevaux().remove(i);
-							cheval.setPosition(plateau.getEcuries().get(j));
+						if (plateau.getEcuries().get(j).getCouleur().equals(c.getChevaux().get(0).getCouleur())) {
+							c.getChevaux().get(0).getPosition().getChevaux().remove(0);
+							c.getChevaux().get(0).setPosition(plateau.getEcuries().get(j));
+							c.getChevaux().get(1).getPosition().getChevaux().remove(0);
+							c.getChevaux().get(1).setPosition(plateau.getEcuries().get(j));
+							c.getChevaux().get(2).getPosition().getChevaux().remove(0);
+							c.getChevaux().get(2).setPosition(plateau.getEcuries().get(j));
+							c.getChevaux().get(3).getPosition().getChevaux().remove(0);
+							c.getChevaux().get(3).setPosition(plateau.getEcuries().get(j));
 						}
 					}
 				}
 			}
 		}
 	}
-}
