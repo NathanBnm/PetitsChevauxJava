@@ -838,14 +838,29 @@ public class Partie {
 			if(c.getChevaux().get(0).getCouleur() != joueurCourant.getCouleur()) {
 					for(int j = 0; j < 4; j++) {
 						if (plateau.getEcuries().get(j).getCouleur().equals(c.getChevaux().get(0).getCouleur())) {
-							c.getChevaux().get(0).getPosition().getChevaux().remove(0);
-							c.getChevaux().get(0).setPosition(plateau.getEcuries().get(j));
-							c.getChevaux().get(1).getPosition().getChevaux().remove(0);
-							c.getChevaux().get(1).setPosition(plateau.getEcuries().get(j));
-							c.getChevaux().get(2).getPosition().getChevaux().remove(0);
-							c.getChevaux().get(2).setPosition(plateau.getEcuries().get(j));
-							c.getChevaux().get(3).getPosition().getChevaux().remove(0);
-							c.getChevaux().get(3).setPosition(plateau.getEcuries().get(j));
+							CaseEcurie ecurie = plateau.getEcuries().get(j);
+							/*
+							for(Pion p : c.getChevaux()) {
+								c.getChevaux().get(c.getChevaux().indexOf(p)).setPosition(ecurie);
+								c.getChevaux().remove(p);
+							}
+							*/
+							if(c.getChevaux().get(0) != null) {
+								c.getChevaux().get(0).setPosition(ecurie);
+								c.getChevaux().get(0).getPosition().getChevaux().remove(0);
+							}
+							if(c.getChevaux().get(1) != null) {
+								c.getChevaux().get(1).setPosition(ecurie);
+								c.getChevaux().get(1).getPosition().getChevaux().remove(1);
+							}
+							if(c.getChevaux().get(2) != null) {
+								c.getChevaux().get(2).setPosition(ecurie);
+								c.getChevaux().get(2).getPosition().getChevaux().remove(2);
+							}
+							if(c.getChevaux().get(3) != null) {
+								c.getChevaux().get(3).setPosition(ecurie);
+								c.getChevaux().get(3).getPosition().getChevaux().remove(3);
+							}
 						}
 					}
 				}
