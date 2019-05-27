@@ -161,10 +161,15 @@ public class Partie {
 				if (plateau.getEcuries().get(i).getCouleur().equals(joueurCourant.getCouleur())) {
 					//tester si l'écurie n'est pas vide, si elle est vide on ne propose pas de sortir un pion
 					if (!(plateau.getEcuries().get(i).getChevaux().isEmpty())) {
-						System.out.print("Voulez vous sortir un pion ? (O/N) ");
-						rep = sc.next();
-						rep = rep.toUpperCase(); 
-						//Si oui alors lequel veut-il déplacer
+						do {
+							System.out.print("Voulez vous sortir un pion ? (O/N) ");
+							rep = sc.next();
+							rep = rep.toUpperCase(); 
+							//Si oui alors lequel veut-il déplacer
+							if(!rep.equals("O") && !rep.equals("N")) {
+								System.out.println("Veuillez répondre par oui ou par non !");
+							}
+						}while(!rep.equals("O") && !rep.equals("N"));
 						if(rep.equals("O")) {
 							System.out.println("Vous avez seléctionné Oui");
 
@@ -174,8 +179,12 @@ public class Partie {
 								//tant que le joueur donne un pion qui n'est pas dans l'écurie on lui demande de reséléctionner un pion valide
 								do {
 									System.out.println("Lequel voulez vous sortir de l'écurie " + plateau.getEcuries().get(i).getChevaux().toString() + " ? ");
+									do {
 									n = sc.next();
-
+									if(!n.equals("1") && !n.equals("2") && !n.equals("3") && !n.equals("4")) {
+										System.out.println("Veuillez entrer un nombre entre 1 et 4");
+									}
+									}while(!n.equals("1") && !n.equals("2") && !n.equals("3") && !n.equals("4"));
 									numPion = Integer.parseInt(n);
 									numPion--;
 									if(!(plateau.getEcuries().get(i).getChevaux().contains(joueurCourant.getChevaux().get(numPion)))) {
@@ -836,34 +845,34 @@ public class Partie {
 	private void mangerLesPions(Case c) {
 		if(!(c.getChevaux().isEmpty())) {
 			if(c.getChevaux().get(0).getCouleur() != joueurCourant.getCouleur()) {
-					for(int j = 0; j < 4; j++) {
-						if (plateau.getEcuries().get(j).getCouleur().equals(c.getChevaux().get(0).getCouleur())) {
-							CaseEcurie ecurie = plateau.getEcuries().get(j);
-							/*
+				for(int j = 0; j < 4; j++) {
+					if (plateau.getEcuries().get(j).getCouleur().equals(c.getChevaux().get(0).getCouleur())) {
+						CaseEcurie ecurie = plateau.getEcuries().get(j);
+						/*
 							for(Pion p : c.getChevaux()) {
 								c.getChevaux().get(c.getChevaux().indexOf(p)).setPosition(ecurie);
 								c.getChevaux().remove(p);
 							}
-							*/
-							if(c.getChevaux().get(0) != null) {
-								c.getChevaux().get(0).setPosition(ecurie);
-								c.getChevaux().get(0).getPosition().getChevaux().remove(0);
-							}
-							if(c.getChevaux().get(1) != null) {
-								c.getChevaux().get(1).setPosition(ecurie);
-								c.getChevaux().get(1).getPosition().getChevaux().remove(1);
-							}
-							if(c.getChevaux().get(2) != null) {
-								c.getChevaux().get(2).setPosition(ecurie);
-								c.getChevaux().get(2).getPosition().getChevaux().remove(2);
-							}
-							if(c.getChevaux().get(3) != null) {
-								c.getChevaux().get(3).setPosition(ecurie);
-								c.getChevaux().get(3).getPosition().getChevaux().remove(3);
-							}
+						 */
+						if(c.getChevaux().get(0) != null) {
+							c.getChevaux().get(0).setPosition(ecurie);
+							c.getChevaux().get(0).getPosition().getChevaux().remove(0);
+						}
+						if(c.getChevaux().get(1) != null) {
+							c.getChevaux().get(1).setPosition(ecurie);
+							c.getChevaux().get(1).getPosition().getChevaux().remove(1);
+						}
+						if(c.getChevaux().get(2) != null) {
+							c.getChevaux().get(2).setPosition(ecurie);
+							c.getChevaux().get(2).getPosition().getChevaux().remove(2);
+						}
+						if(c.getChevaux().get(3) != null) {
+							c.getChevaux().get(3).setPosition(ecurie);
+							c.getChevaux().get(3).getPosition().getChevaux().remove(3);
 						}
 					}
 				}
 			}
 		}
 	}
+}
