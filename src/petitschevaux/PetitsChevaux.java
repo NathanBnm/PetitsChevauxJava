@@ -5,7 +5,7 @@
  *  |   __| -_|  _| |  _|_ -|  |   --|   | -_| | | .'| | |_'_|
  *  |__|  |___|_| |_|_| |___|  |_____|_|_|___|\_/|__,|___|_,_|
  *                                                            
- *                                               Version 0.0.1
+ *                                               Version 1.0.0
  *  
  *                 Nathan Bonnemains <21801526@etu.unicaen.fr>
  *                 Gérémy L'Ecuyer <21802888@etu.unicaen.fr>
@@ -37,7 +37,7 @@ public class PetitsChevaux {
 		System.out.println("  |   __| -_|  _| |  _|_ -|  |   --|   | -_| | | .'| | |_'_|");
 		System.out.println("  |__|  |___|_| |_|_| |___|  |_____|_|_|___|\\_/|__,|___|_,_|");
 		System.out.println("");                                                           
-		System.out.println("                                               Version 0.0.1");
+		System.out.println("                                               Version 1.0.0");
 		System.out.println("");  
 		System.out.println("                 Nathan Bonnemains <21801526@etu.unicaen.fr>");
 		System.out.println("                 Gérémy L'Ecuyer <21802888@etu.unicaen.fr>");
